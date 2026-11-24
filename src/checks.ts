@@ -3,6 +3,10 @@
 import { shareInMonth } from "./ledger";
 import type { Fields, Flag } from "./types";
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/** "2027-01" -> "January 2027" */
+const label = (m: string) => `${MONTHS[Number(m.slice(5, 7)) - 1] ?? m} ${m.slice(0, 4)}`;
+
 const isDate = (d: string | null) => !!d && /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(d));
 
 export function checkFields(f: Fields, month: string): Flag[] {
@@ -17,8 +21,8 @@ export function checkFields(f: Fields, month: string): Flag[] {
     const days = (Date.parse(end) - Date.parse(s!)) / 86_400_000 + 1;
     // Pay periods and gig summaries cover a month at most. A longer span usually means a misread year.
     if (days > 35) flags.push({ field, message: `These dates span ${Math.round(days)} days. Check the year.` });
-    if (end.slice(0, 7) < month && s!.slice(0, 7) < month) flags.push({ field, message: `Dates are before ${month}. Is this the right document?` });
-    if (s!.slice(0, 7) > month) flags.push({ field, message: `Dates are after ${month}. Is this the right document?` });
+    if (end.slice(0, 7) < month && s!.slice(0, 7) < month) flags.push({ field, message: `The dates are before ${label(month)}. Is this the right document?` });
+    if (s!.slice(0, 7) > month) flags.push({ field, message: `The dates are after ${label(month)}. Is this the right document?` });
   };
   // Only the days inside the month count. When that cuts a document's hours or pay, say so,
   // because it changes the total and a misread date shows up here first.
@@ -32,7 +36,7 @@ export function checkFields(f: Fields, month: string): Flag[] {
     const part = amount === null ? "" : what === "pay"
       ? `, so $${(amount * share).toFixed(2)} of $${amount.toFixed(2)} counts`
       : `, so ${r(amount * share)} of ${r(amount)} hours count`;
-    flags.push({ field, message: `Only ${inside} of ${days} days are in ${month}${part}. Check the dates.` });
+    flags.push({ field, message: `Only ${inside} of ${days} days are in ${label(month)}${part}. Check the dates.` });
   };
 
   if (f.type === "pay_stub") {

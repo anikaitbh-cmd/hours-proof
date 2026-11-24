@@ -174,7 +174,9 @@ function render() {
 }
 
 /** USWDS step indicator with counters. The current step is the first one not yet complete. */
-function steps(list: [label: string, done: boolean][]) {
+function steps(raw: [label: string, done: boolean][]) {
+  // A step only counts as done when every step before it is done.
+  const list = raw.map(([l, d], i) => [l, d && raw.slice(0, i).every(([, p]) => p)] as [string, boolean]);
   let cur = list.findIndex(([, done]) => !done);
   if (cur === -1) cur = list.length - 1;
   const allDone = list.every(([, d]) => d);
@@ -457,7 +459,7 @@ async function pump() {
 }
 
 async function loadSamples() {
-  const names = ["pay-stub-jan-1.png", "pay-stub-jan-2.png", "volunteer-letter-jan.png", "gig-summary-jan.png"];
+  const names = ["pay-stub-jan-1.png", "pay-stub-jan-2.png", "pay-stub-dec.png", "volunteer-letter-jan.png", "gig-summary-jan.png"];
   S.month = "2027-01";
   const files = await Promise.all(names.map(async (n) => {
     const b = await (await fetch(`/samples/dana/${n}`)).blob();

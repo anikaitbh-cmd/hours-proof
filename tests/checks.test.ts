@@ -51,9 +51,22 @@ describe("partial-month flag (Dana's letter misread as Jan 30 - Feb 2, seen live
   const letter = { type: "volunteer_letter", org: "Northside Community Pantry", address: "x", periodStart: "2027-01-30", periodEnd: "2027-02-02", hours: 28, activity: "x", contact: "Grace Holloway" } as const;
   it("flags it and says how much counts", () => {
     const f = checkFields(letter as never, "2027-01");
-    expect(f.map((x) => x.message).join(" ")).toContain("Only 2 of 4 days are in 2027-01, so 14 of 28 hours count");
+    expect(f.map((x) => x.message).join(" ")).toContain("Only 2 of 4 days are in January 2027, so 14 of 28 hours count");
   });
   it("stays quiet when the whole period is inside the month", () => {
     expect(checkFields({ ...letter, periodStart: "2027-01-02", periodEnd: "2027-01-30" } as never, "2027-01")).toEqual([]);
+  });
+});
+
+describe("Dana's December stub (demo: the wrong month's paper)", () => {
+  const dec = stub({ periodStart: "2026-12-06", periodEnd: "2026-12-19", hours: 16, gross: 240 });
+  it("is flagged as the wrong month", () => {
+    expect(checkFields(dec, "2027-01").map((x) => x.message)).toContain("The dates are before January 2027. Is this the right document?");
+  });
+  it("adds nothing to January", async () => {
+    const { ledger } = await import("../src/ledger");
+    const doc = { id: "d", name: "pay-stub-dec.png", imageUrl: "", sample: true, status: "done" as const, fields: dec, flags: [], confirmed: new Set<string>() };
+    const t = ledger([doc], "2027-01").totals;
+    expect([t.totalHours, t.income]).toEqual([0, 0]);
   });
 });
