@@ -33,6 +33,8 @@ export interface RuleCheck {
   checkedAt: string;
   where: Where;
   sourcesRead: string[];
+  /** The exact totals payload this check was run on. A result only applies to those totals. */
+  forPayload?: string;
 }
 
 const RULES_SYSTEM =
@@ -44,6 +46,8 @@ export async function checkRules(t: Totals): Promise<RuleCheck> {
   const prompt =
     `Rule pages:\n${RULE_SOURCES.map((s) => `- ${s.url}`).join("\n")}\n\n` +
     `Client totals (no personal details):\n${cloudPayload(t)}\n\n` +
+    "These totals are final: the app already counted only the days inside the month. Quote them as given; " +
+    "never add hours up yourself. Gig app active time (gigActiveHours) is not counted in totalHours.\n\n" +
     `Federal baseline the app already uses: ${RULE.hoursPerMonth} hours a month, or monthly income of at least ` +
     `$${RULE.incomeRoute} (${RULE.hoursPerMonth} hours x $${RULE.federalMinWage} federal minimum wage).\n\n` +
     "Answer with one JSON object in a ```json block, with keys:\n" +
@@ -68,6 +72,7 @@ export async function checkRules(t: Totals): Promise<RuleCheck> {
     startDate: j.startDate ?? "",
     openQuestions: Array.isArray(j.openQuestions) ? j.openQuestions : [],
     checkedAt: new Date().toISOString(),
+    forPayload: cloudPayload(t),
     where: r.response.inferenceSource === InferenceSource.ON_DEVICE ? "on_device" : "in_cloud",
     sourcesRead: meta
       .filter((u) => String(u.urlRetrievalStatus ?? "").includes("SUCCESS"))
@@ -80,12 +85,19 @@ const REPLY_SYSTEM =
   "You draft short, plain letters from a Medicaid enrollment assister to the Missouri Family Support Division. " +
   "Use the placeholders exactly as given. Never invent names, numbers, dates or case details.";
 
+/** "2027-01" -> "January 2027", so letters read like letters. */
+export function monthName(m: string): string {
+  const [y, mo] = m.split("-").map(Number);
+  if (!y || !mo) return m;
+  return new Date(Date.UTC(y, mo - 1, 1)).toLocaleString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+}
+
 export const PLACEHOLDERS = ["[CLIENT NAME]", "[CASE NUMBER]", "[NOTICE DATE]", "[ASSISTER NAME]", "[ORGANIZATION]"];
 
 /** Inputs are totals and the rule summary only, so this may run on Nano or in the cloud. */
 export async function draftReply(t: Totals, rules: RuleCheck | null, docList: string[]) {
   const prompt =
-    `Month: ${t.month}\n` +
+    `Month: ${monthName(t.month)}\n` +
     `Work hours: ${t.workHours}\nVolunteer hours: ${t.volunteerHours}\nTotal hours: ${t.totalHours}\n` +
     `Monthly income: $${t.income.toFixed(2)} (of which gig app earnings: $${t.gigIncome.toFixed(2)})\n` +
     `Meets 80 hours: ${t.meetsHours ? "yes" : "no"}\nMeets $${RULE.incomeRoute} income: ${t.meetsIncome ? "yes" : "no"}\n` +

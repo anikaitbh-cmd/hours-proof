@@ -46,3 +46,14 @@ describe("date variants seen from Nano in the bench", () => {
   it("splits a range even when the end is also filled", () => expect(isoRange("Jan 11 - Jan 17, 2027", "Jan 17, 2027")).toEqual(["2027-01-11", "2027-01-17"]));
   it("leaves dates with no year blank", () => expect(isoRange("Jan 04", "Feb 03")).toEqual([null, null]));
 });
+
+describe("partial-month flag (Dana's letter misread as Jan 30 - Feb 2, seen live 11/24)", () => {
+  const letter = { type: "volunteer_letter", org: "Northside Community Pantry", address: "x", periodStart: "2027-01-30", periodEnd: "2027-02-02", hours: 28, activity: "x", contact: "Grace Holloway" } as const;
+  it("flags it and says how much counts", () => {
+    const f = checkFields(letter as never, "2027-01");
+    expect(f.map((x) => x.message).join(" ")).toContain("Only 2 of 4 days are in 2027-01, so 14 of 28 hours count");
+  });
+  it("stays quiet when the whole period is inside the month", () => {
+    expect(checkFields({ ...letter, periodStart: "2027-01-02", periodEnd: "2027-01-30" } as never, "2027-01")).toEqual([]);
+  });
+});

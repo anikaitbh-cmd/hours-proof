@@ -40,7 +40,7 @@ export const SCHEMAS: Record<Exclude<DocType, "other">, { schema: Record<string,
     schema: obj({ org: str, address: str, periodStart: date, periodEnd: date, hours: num, activity: str, contact: str }),
     ask:
       "This is a letter confirming volunteer work. Return the organization name, its address, the first and " +
-      "last date volunteered copied exactly as printed, the total hours, a short description of the activity, and the name " +
+      "last date volunteered (the dates of the volunteering, usually after \"from\" and \"through\"; never the date the letter was written), copied exactly as printed, the total hours, a short description of the activity, and the name " +
       "of the person who signed it. Use null for anything not shown.",
   },
   school_record: {

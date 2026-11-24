@@ -228,6 +228,7 @@ function docCard(d: Doc) {
 
 function rulesBlock(t: ReturnType<typeof ledger>["totals"]) {
   const r = S.rules;
+  const stale = !!r && r.forPayload !== cloudPayload(t);
   const consent = S.consent ? `
     <div class="consent">
       <div class="consent-head"><strong>This is everything that will be sent</strong><span class="badge cloud">Cloud · Gemini · ${esc(getCloudModel())}</span></div>
@@ -239,13 +240,13 @@ function rulesBlock(t: ReturnType<typeof ledger>["totals"]) {
     </div>` : "";
   const result = r ? `
     <div class="rules">
-      <div class="rules-head"><strong>${r.status === "meets" ? "Meets the rules as checked" : r.status === "short" ? "Short under the rules as checked" : "Rules check: some things are open"}</strong>
+      <div class="rules-head"><strong>${stale ? "Rules checked for different totals" : r.status === "meets" ? "Meets the rules as checked" : r.status === "short" ? "Short under the rules as checked" : "Rules check: some things are open"}</strong>
         ${badge(r.where)}</div>
-      <p>${esc(r.summary)}</p>
-      <ul class="rule-list">${r.rules.map((x) => `<li class="${x.applies ? "yes" : ""}"><strong>${esc(x.rule)}</strong> ${esc(x.detail)}
+      <p>${stale ? "The totals have changed since this check. The rules below still apply; check again for a verdict on these totals." : esc(r.summary)}</p>
+      <ul class="rule-list">${r.rules.map((x) => `<li class="${x.applies && !stale ? "yes" : ""}"><strong>${esc(x.rule)}</strong> ${esc(x.detail)}
         ${x.sourceUrl ? `<a href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">source</a>` : ""}</li>`).join("")}</ul>
       ${r.startDate ? `<p class="small"><strong>Start date:</strong> ${esc(r.startDate)}</p>` : ""}
-      ${r.openQuestions.length ? `<p class="small"><strong>Still open:</strong> ${r.openQuestions.map(esc).join(" · ")}</p>` : ""}
+      ${r.openQuestions.length && !stale ? `<p class="small"><strong>Still open:</strong> ${r.openQuestions.map(esc).join(" · ")}</p>` : ""}
       <p class="fine">Rules last checked ${new Date(r.checkedAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}${r.sourcesRead.length ? ` · ${r.sourcesRead.length} of ${RULE_SOURCES.length} pages read` : ""}. Missouri can still change its start date.</p>
     </div>` : `<p class="muted">Missouri's rules haven't been checked on this computer yet.</p>`;
   const can = S.docs.length > 0 && S.online;
@@ -461,7 +462,8 @@ async function runReply() {
   try {
     const types = [...new Set(S.docs.filter((d) => d.fields).map((d) => TYPE_LABEL[d.fields!.type].toLowerCase()))];
     const counts = types.map((t) => `${S.docs.filter((d) => d.fields && TYPE_LABEL[d.fields.type].toLowerCase() === t).length} ${t}${S.docs.filter((d) => d.fields && TYPE_LABEL[d.fields.type].toLowerCase() === t).length > 1 ? "s" : ""}`);
-    S.reply = await draftReply(totals, S.rules, counts);
+    const fresh = S.rules && S.rules.forPayload === cloudPayload(totals) ? S.rules : null;
+    S.reply = await draftReply(totals, fresh, counts);
     S.log.push({ step: "Draft the reply", where: S.reply.where, ms: S.reply.ms, at: new Date().toISOString() });
   } catch (err) {
     console.error(err);

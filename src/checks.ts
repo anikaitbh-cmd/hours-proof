@@ -1,5 +1,6 @@
 // Plain-code checks on what Nano read. A small model gives no confidence score,
 // so we ask: do the numbers agree with each other and with the month?
+import { shareInMonth } from "./ledger";
 import type { Fields, Flag } from "./types";
 
 const isDate = (d: string | null) => !!d && /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(d));
@@ -19,6 +20,20 @@ export function checkFields(f: Fields, month: string): Flag[] {
     if (end.slice(0, 7) < month && s!.slice(0, 7) < month) flags.push({ field, message: `Dates are before ${month}. Is this the right document?` });
     if (s!.slice(0, 7) > month) flags.push({ field, message: `Dates are after ${month}. Is this the right document?` });
   };
+  // Only the days inside the month count. When that cuts a document's hours or pay, say so,
+  // because it changes the total and a misread date shows up here first.
+  const partial = (field: string, s: string | null, e: string | null, what: string, amount: number | null) => {
+    if (!isDate(s) || !isDate(e) || e! < s!) return;
+    const share = shareInMonth(s, e, month);
+    if (share <= 0 || share >= 1) return;
+    const days = Math.round((Date.parse(e!) - Date.parse(s!)) / 86_400_000) + 1;
+    const inside = Math.round(share * days);
+    const r = (n: number) => Math.round(n * 100) / 100;
+    const part = amount === null ? "" : what === "pay"
+      ? `, so $${(amount * share).toFixed(2)} of $${amount.toFixed(2)} counts`
+      : `, so ${r(amount * share)} of ${r(amount)} hours count`;
+    flags.push({ field, message: `Only ${inside} of ${days} days are in ${month}${part}. Check the dates.` });
+  };
 
   if (f.type === "pay_stub") {
     need("periodStart", f.periodStart, "pay period start");
@@ -37,6 +52,7 @@ export function checkFields(f: Fields, month: string): Flag[] {
     }
     if (f.hours !== null && (f.hours <= 0 || f.hours > 200)) flags.push({ field: "hours", message: "Hours look out of range for one pay period." });
     inMonth("periodStart", f.periodStart, f.periodEnd);
+    partial("periodStart", f.periodStart, f.periodEnd, "hours", f.hours);
   } else if (f.type === "gig_summary") {
     need("rangeStart", f.rangeStart, "start date");
     need("earnings", f.earnings, "earnings");
@@ -45,12 +61,14 @@ export function checkFields(f: Fields, month: string): Flag[] {
       flags.push({ field: "activeMinutes", message: "Active time is longer than online time. Check the screenshot." });
     }
     inMonth("rangeStart", f.rangeStart, f.rangeEnd);
+    partial("rangeStart", f.rangeStart, f.rangeEnd, "pay", f.earnings);
   } else if (f.type === "volunteer_letter") {
     need("org", f.org, "organization");
     need("hours", f.hours, "hours");
     need("periodStart", f.periodStart, "start date");
     need("contact", f.contact, "contact person");
     inMonth("periodStart", f.periodStart, f.periodEnd);
+    partial("periodStart", f.periodStart, f.periodEnd, "hours", f.hours);
   } else if (f.type === "school_record") {
     need("status", f.status, "enrollment status");
     need("termStart", f.termStart, "term dates");
