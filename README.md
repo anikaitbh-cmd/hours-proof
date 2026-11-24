@@ -52,14 +52,14 @@ Without Gemini Nano, client documents are **not** sent to the cloud. The assiste
 ## Firebase pieces
 
 - **Firebase AI Logic** hybrid inference: Gemini Nano in Chrome and `gemini-3.5-flash-lite` in the cloud, with `inferenceSource` shown as an On device / Cloud badge on every result.
-- **Structured output on both sides:** one JSON Schema used as `responseConstraint` on device and `responseJsonSchema` in the cloud.
+- **Structured output on both sides:** document reading uses one JSON Schema, as `responseConstraint` on device and `responseJsonSchema` in the cloud. The rule check uses URL context, so it returns JSON that the code parses and checks.
 - **App Check** with reCAPTCHA Enterprise and limited-use tokens (replay protection).
 - **Remote Config** for the cloud model name, changeable without a redeploy.
 - **Hosting** for the live app.
 
 ## Accuracy
 
-`bench.html` runs Gemini Nano on device over fictional fixtures with known answers (`bench/fixtures`, drawn by `tools/make_docs.py`) and scores every field. Latest run ([`bench/RESULTS.md`](bench/RESULTS.md)):
+`bench.html` (local only: `npm run dev`, then open `/bench.html`) runs Gemini Nano on device over fictional fixtures with known answers (`bench/fixtures`, drawn by `tools/make_docs.py`) and scores every field. Latest run ([`bench/RESULTS.md`](bench/RESULTS.md)):
 
 | Set | Docs | Fields exact | Wrong but not flagged |
 |---|---|---|---|

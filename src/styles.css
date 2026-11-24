@@ -55,6 +55,7 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.2; }
 
 /* Upload: drawn like usa-file-input's drop target */
 .hp-drop { display: flex; align-items: center; justify-content: center; gap: .75rem; padding: 2rem 1rem; border: 1px dashed var(--base-light); background: #fff; cursor: pointer; text-align: center; }
+.hp-drop:focus-within { outline: .25rem solid #2491ff; outline-offset: 0; }
 .hp-drop:hover, .hp-drop.over { border-color: var(--primary); background: var(--primary-lighter); }
 .hp-drop .usa-icon { color: var(--primary); }
 .hp-drop .hp-choose { color: var(--primary); text-decoration: underline; }

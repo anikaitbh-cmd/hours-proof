@@ -99,6 +99,8 @@ function render() {
   const docsDone = S.docs.length > 0 && !reading && flagged === 0;
   const freshRules = !!S.rules && S.rules.forPayload === cloudPayload(totals);
 
+  const active = document.activeElement as HTMLInputElement | null;
+  const keep = active?.id ? { id: active.id, pos: active.selectionStart ?? null } : null;
   $app.innerHTML = `
   <a class="usa-skipnav" href="#main">Skip to main content</a>
   ${anySample ? `<div class="hp-demo"><div class="grid-container">Fictional client and documents, made up for this demo.</div></div>` : ""}
@@ -130,7 +132,7 @@ function render() {
         <h2 class="hp-h2" id="h-docs">Documents</h2>
         <p class="hp-lead">Pay stubs, gig app summaries, volunteer letters and school records. They're read on this laptop and never uploaded.</p>
         <label class="hp-drop" id="drop">
-          <input type="file" id="file" accept="image/png,image/jpeg,image/webp,image/heic" multiple hidden>
+          <input type="file" id="file" class="usa-sr-only" accept="image/png,image/jpeg,image/webp,image/heic" multiple>
           ${icon("file_upload", "usa-icon--size-4")}<span>Drag photos of the documents here or <span class="hp-choose">choose from a folder</span></span>
         </label>
         ${S.docs.length === 0 ? `<button class="usa-button usa-button--outline hp-samples" data-act="samples">Try it with Dana's fictional documents</button>` : ""}
@@ -171,6 +173,11 @@ function render() {
   <footer class="hp-footer"><div class="grid-container">Every example here is fictional. Hours Proof helps an assister prepare proof. It isn't legal advice, and the state makes the decision.</div></footer>
   <div id="print"></div>`;
   bind();
+  if (keep) {
+    const el = document.getElementById(keep.id) as HTMLInputElement | null;
+    el?.focus();
+    try { if (keep.pos !== null) el?.setSelectionRange(keep.pos, keep.pos); } catch { /* date/number inputs */ }
+  }
 }
 
 /** USWDS step indicator with counters. The current step is the first one not yet complete. */
@@ -260,9 +267,10 @@ function docRow(d: Doc) {
       <label class="usa-label" for="${d.id}-${k}">${label}</label>
       <input class="usa-input" id="${d.id}-${k}" data-act="field" data-id="${d.id}" data-key="${k}" data-kind="${kind}"
         type="${kind === "date" ? "date" : kind === "text" ? "text" : "number"}" ${kind === "money" || kind === "num" ? 'step="0.01"' : ""}
+        ${flag ? `aria-describedby="${d.id}-${k}-flag" aria-invalid="true"` : ""}
         value="${v === null || v === undefined ? "" : esc(v)}"></div>`;
   }).join("");
-  const flagList = flags.map((f) => `<div class="hp-flag"><p>${icon("flag")}${esc(f.message)}</p>
+  const flagList = flags.map((f) => `<div class="hp-flag"><p id="${d.id}-${f.field}-flag">${icon("flag")}${esc(f.message)}</p>
       <button class="usa-button usa-button--outline" data-act="confirm" data-id="${d.id}" data-key="${f.field}">It's right</button></div>`).join("");
   return `<article class="hp-doc ${flags.length ? "is-flagged" : ""}">${head}${note}${flagList}<div class="hp-fields">${typeSelect}${fields}</div></article>`;
 }
@@ -281,11 +289,11 @@ function rulesBlock(t: ReturnType<typeof ledger>["totals"]) {
     </div>` : "";
   const result = r ? `
     <div class="hp-panel">
-      <div class="hp-panel__head"><h3>${stale ? "Rules checked for different totals" : r.status === "meets" ? "Meets the rules as checked" : r.status === "short" ? "Short under the rules as checked" : "Some things are still open"}</h3>
+      <div class="hp-panel__head"><h3>${stale ? "Rules checked for different totals" : t.meetsHours || t.meetsIncome ? "Rules checked for these totals" : "Rules checked: short this month"}</h3>
         ${badge(r.where)}</div>
       <p>${stale ? "The totals have changed since this check. The rules below still apply. Check again for a result on these totals." : esc(r.summary)}</p>
       <ul class="usa-list usa-list--unstyled hp-rules">${r.rules.map((x) => `<li>${x.applies && !stale ? icon("check") : `<span class="hp-dot"></span>`}<span><strong>${esc(x.rule.replace(/\.+$/, ""))}.</strong> ${esc(x.detail)}
-        ${x.sourceUrl ? `<a class="usa-link usa-link--external" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">Source</a>` : ""}</span></li>`).join("")}</ul>
+        ${RULE_SOURCES.some((s) => s.url === x.sourceUrl) ? `<a class="usa-link usa-link--external" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">Source</a>` : ""}</span></li>`).join("")}</ul>
       ${r.startDate ? `<p><strong>Start date.</strong> ${esc(r.startDate)}</p>` : ""}
       ${r.openQuestions.length && !stale ? `<p><strong>Still open.</strong> ${r.openQuestions.map(esc).join(" ")}</p>` : ""}
       <p class="hp-hint">Checked ${new Date(r.checkedAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}${r.sourcesRead.length ? `, ${r.sourcesRead.length} of ${RULE_SOURCES.length} pages read` : ""}. Missouri can still change its start date.</p>
@@ -540,7 +548,10 @@ function exportPacket() {
       <table><thead><tr><th>Document</th><th>Counted</th><th>Hours</th><th>Pay</th></tr></thead><tbody>
       ${lines.map((l, i) => `<tr><td>${i + 1}. ${esc(l.label)}</td><td>${l.share >= 0.999 ? "All" : Math.round(l.share * 100) + "%"}</td><td>${l.hours ? hrs(l.hours) : "–"}</td><td>${l.income ? money(l.income) : "–"}</td></tr>`).join("")}
       </tbody></table>
-      ${S.rules ? `<p class="fine">Rules checked ${new Date(S.rules.checkedAt).toLocaleDateString("en-US", { dateStyle: "medium" })} against: ${RULE_SOURCES.map((s) => esc(s.url)).join(" · ")}</p>` : ""}
+      ${S.rules && S.rules.forPayload === cloudPayload(totals) ? `<h2>Rules that apply</h2>
+      <ul>${S.rules.rules.filter((x) => x.applies).map((x) => `<li><strong>${esc(x.rule.replace(/\.+$/, ""))}.</strong> ${esc(x.detail)}${RULE_SOURCES.some((s) => s.url === x.sourceUrl) ? ` (${esc(x.sourceUrl)})` : ""}</li>`).join("")}</ul>
+      ${S.rules.startDate ? `<p>Start date: ${esc(S.rules.startDate)}</p>` : ""}
+      <p>Rules checked ${new Date(S.rules.checkedAt).toLocaleDateString("en-US", { dateStyle: "medium" })} against: ${RULE_SOURCES.map((s) => esc(s.url)).join(" · ")}</p>` : ""}
     </section>
     ${docs.map((d, i) => `<section class="pp doc-page"><h2>${i + 1}. ${TYPE_LABEL[d.fields!.type]}</h2><img src="${d.imageUrl}" alt=""></section>`).join("")}`;
   const imgs = [...p.querySelectorAll("img")];

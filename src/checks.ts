@@ -14,13 +14,13 @@ export function checkFields(f: Fields, month: string): Flag[] {
   const need = (field: string, v: unknown, label: string) => {
     if (v === null || v === undefined || v === "") flags.push({ field, message: `Couldn't read the ${label}. Please type it in.` });
   };
-  const inMonth = (field: string, s: string | null, e: string | null) => {
+  const inMonth = (field: string, s: string | null, e: string | null, maxDays = 35) => {
     if (!isDate(s)) return;
     const end = isDate(e) ? e! : s!;
     if (end < s!) flags.push({ field, message: "End date is before the start date." });
     const days = (Date.parse(end) - Date.parse(s!)) / 86_400_000 + 1;
     // Pay periods and gig summaries cover a month at most. A longer span usually means a misread year.
-    if (days > 35) flags.push({ field, message: `These dates span ${Math.round(days)} days. Check the year.` });
+    if (days > maxDays) flags.push({ field, message: `These dates span ${Math.round(days)} days. Check the year.` });
     if (end.slice(0, 7) < month && s!.slice(0, 7) < month) flags.push({ field, message: `The dates are before ${label(month)}. Is this the right document?` });
     if (s!.slice(0, 7) > month) flags.push({ field, message: `The dates are after ${label(month)}. Is this the right document?` });
   };
@@ -71,7 +71,7 @@ export function checkFields(f: Fields, month: string): Flag[] {
     need("hours", f.hours, "hours");
     need("periodStart", f.periodStart, "start date");
     need("contact", f.contact, "contact person");
-    inMonth("periodStart", f.periodStart, f.periodEnd);
+    inMonth("periodStart", f.periodStart, f.periodEnd, 370);
     partial("periodStart", f.periodStart, f.periodEnd, "hours", f.hours);
   } else if (f.type === "school_record") {
     need("status", f.status, "enrollment status");
