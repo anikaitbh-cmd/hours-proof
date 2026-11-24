@@ -20,3 +20,12 @@ describe("minutes (durations converted in code)", () => {
   it.each([["14h 05m", 845], ["21h 30m", 1290], ["3 hr 5 min", 185], ["2 hours", 120], ["14:05", 845], ["45 min", 45], [null, null], ["", null]])(
     "%s -> %s", (s, m) => expect(minutes(s)).toBe(m));
 });
+
+import { amount, isoDate } from "../src/parse";
+describe("isoDate (formats fixed in code)", () => {
+  it.each([["2027-01-03", "2027-01-03"], ["01/18/2026", "2026-01-18"], ["1/3/27", "2027-01-03"], ["Jan 03, 2027", "2027-01-03"],
+    ["January 3, 2027", "2027-01-03"], ["3 Jan 2027", "2027-01-03"], ["02/30/2027", null], ["soon", null], [null, null]])("%s -> %s", (s, d) => expect(isoDate(s)).toBe(d));
+});
+describe("amount", () => {
+  it.each([["$1,234.50", 1234.5], [270, 270], ["n/a", null]])("%s -> %s", (s, n) => expect(amount(s)).toBe(n));
+});

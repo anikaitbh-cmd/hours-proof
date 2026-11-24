@@ -12,6 +12,12 @@ declare global {
   var FIREBASE_APPCHECK_DEBUG_TOKEN: boolean | string | undefined;
 }
 
+// `?no-nano` hides Gemini Nano from the page, to show what a browser without it gets.
+export const SIMULATE_NO_NANO = new URLSearchParams(location.search).has("no-nano");
+if (SIMULATE_NO_NANO) {
+  try { Object.defineProperty(globalThis, "LanguageModel", { value: undefined, configurable: true }); } catch { /* ignore */ }
+}
+
 export const app = initializeApp(firebaseConfig);
 
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {

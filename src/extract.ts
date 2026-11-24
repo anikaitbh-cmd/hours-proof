@@ -1,7 +1,7 @@
 import { InferenceSource, type Part } from "firebase/ai";
 import { deviceOnly, imagePart, nanoState, preferDevice } from "./ai";
 import { checkFields } from "./checks";
-import { minutes } from "./parse";
+import { amount, isoDate, minutes } from "./parse";
 import { registerImage, registerText } from "./guard";
 import type { DocType, Fields, Where } from "./types";
 
@@ -66,12 +66,19 @@ export interface ReadResult {
 
 export class NoNano extends Error {}
 
-function normalize(raw: Record<string, unknown>): Fields {
-  if (raw.type === "gig_summary") {
-    const { activeTime, onlineTime, ...rest } = raw;
+const DATE_KEYS = ["periodStart", "periodEnd", "rangeStart", "rangeEnd", "termStart", "termEnd"];
+const NUM_KEYS = ["hours", "rate", "gross", "earnings"];
+
+/** Model output is copied text. Units, formats and arithmetic are fixed here, in code. */
+export function normalize(raw: Record<string, unknown>): Fields {
+  const f: Record<string, unknown> = { ...raw };
+  for (const k of DATE_KEYS) if (k in f) f[k] = isoDate(f[k]) ?? null;
+  for (const k of NUM_KEYS) if (k in f) f[k] = amount(f[k]);
+  if (f.type === "gig_summary") {
+    const { activeTime, onlineTime, ...rest } = f;
     return { ...rest, activeMinutes: minutes(activeTime), onlineMinutes: minutes(onlineTime) } as unknown as Fields;
   }
-  return raw as unknown as Fields;
+  return f as unknown as Fields;
 }
 
 function source(r: { response: { inferenceSource?: string } }): Where {

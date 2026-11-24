@@ -1,4 +1,4 @@
-import { getCloudModel, loadRemoteConfig, nanoState, warmUpNano, type NanoState } from "./ai";
+import { getCloudModel, loadRemoteConfig, nanoState, SIMULATE_NO_NANO, warmUpNano, type NanoState } from "./ai";
 import { checkFields } from "./checks";
 import { checkRules, cloudPayload, draftReply, PLACEHOLDERS, type RuleCheck } from "./cloud";
 import { RULE, RULE_SOURCES } from "./config";
@@ -171,7 +171,7 @@ function nanoBanner() {
   }
   if (S.nano === "no-api" || S.nano === "unavailable") {
     return `<div class="banner quiet">
-      <div><strong>This browser can't run Gemini Nano.</strong> Client documents are never sent to the cloud instead, so you type their numbers in and everything else still works.
+      <div><strong>${SIMULATE_NO_NANO ? "Simulating a browser without Gemini Nano." : "This browser can't run Gemini Nano."}</strong> Client documents are never sent to the cloud instead, so you type their numbers in and everything else still works.
       The fictional samples can be read in the cloud so you can see the flow. Desktop Chrome runs it on device.</div>
     </div>`;
   }

@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Hours Proof bench</title>
+<style>body{font:14px system-ui;margin:24px;color:#17242b}pre{background:#f4f6f5;padding:12px;max-height:60vh;overflow:auto}button{font:inherit;padding:8px 14px}</style></head>
+<body><h1>Hours Proof bench</h1>
+<p>Runs Gemini Nano (on device only) over the fictional fixtures and scores each field against the answer key.</p>
+<label><input type="checkbox" id="clean" checked> clean</label> <label><input type="checkbox" id="messy" checked> messy</label>
+<button id="go">Run</button> <span id="status"></span>
+<pre id="out"></pre>
+<script type="module" src="/src/bench.ts"></script></body></html>
