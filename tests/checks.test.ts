@@ -29,3 +29,19 @@ describe("isoDate (formats fixed in code)", () => {
 describe("amount", () => {
   it.each([["$1,234.50", 1234.5], [270, 270], ["n/a", null]])("%s -> %s", (s, n) => expect(amount(s)).toBe(n));
 });
+
+import { isoRange } from "../src/parse";
+describe("isoRange (year borrowed from the end date)", () => {
+  it.each([
+    ["Oct 19", "Nov 18, 2026", "2026-10-19", "2026-11-18"],
+    ["Dec 20", "Jan 02, 2027", "2026-12-20", "2027-01-02"],
+    ["01/03/2027", "01/16/2027", "2027-01-03", "2027-01-16"],
+    ["12/28", "01/10/2027", "2026-12-28", "2027-01-10"],
+  ])("%s .. %s", (s, e, ws, we) => expect(isoRange(s, e)).toEqual([ws, we]));
+});
+
+describe("date variants seen from Nano in the bench", () => {
+  it.each([["05 03 2026", "2026-05-03"], ["07 05, 2026", "2026-07-05"], ["Jan 1, 17", null]])("%s -> %s", (s, d) => expect(isoDate(s)).toBe(d));
+  it("splits a range copied into one field", () => expect(isoRange("Apr 06 - May 06, 2026", null)).toEqual(["2026-04-06", "2026-05-06"]));
+  it("leaves dates with no year blank", () => expect(isoRange("Jan 04", "Feb 03")).toEqual([null, null]));
+});

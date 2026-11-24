@@ -1,0 +1,308 @@
+[
+ {
+  "set": "clean",
+  "name": "vol-00",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 9133,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Northside Community Pantry",
+    "got": "Northside Community Pantry",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-06-04",
+    "got": "2026-06-04",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-06-25",
+    "got": "2026-06-25",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Northside Community Pantry",
+   "address": "3120 N Grand Blvd, St. Louis, MO 63107",
+   "periodStart": "06/04/2026",
+   "periodEnd": "06/25/2026",
+   "hours": 20,
+   "activity": "sorting and handing out food boxes",
+   "contact": "Grace Holloway"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "vol-04",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 12085,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Riverfront Literacy Project",
+    "got": "Riverfront Literacy Project",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-07-05",
+    "got": "2026-07-05",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-07-27",
+    "got": "2026-07-27",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Riverfront Literacy Project",
+   "address": "450 Main St, Kansas City, MO 64105",
+   "periodStart": "July 05, 2026",
+   "periodEnd": "July 27, 2026",
+   "hours": 20,
+   "activity": "tutoring adults in reading",
+   "contact": "Samuel Okafor"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-07",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 10544,
+  "flags": [
+   "gross"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-10-25",
+    "got": "2026-10-25",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-11-07",
+    "got": "2026-11-07",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30.25,
+    "got": 30.25,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 468.88,
+    "got": 15.5,
+    "ok": false
+   }
+  ],
+  "raw": {
+   "employer": "RIVERBEND GROCERY",
+   "periodStart": "10/25/2026",
+   "periodEnd": "11/07/2026",
+   "hours": 30.25,
+   "rate": 15.5,
+   "gross": 15.5
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-00",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 10940,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2027-01-11",
+    "got": "2027-01-11",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2027-01-17",
+    "got": "2027-01-17",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 889.47,
+    "got": 889.47,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 1556,
+    "got": 1556,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Jan 11",
+   "rangeEnd": "Jan 17, 2027",
+   "earnings": 889.47,
+   "activeTime": "25h 56m",
+   "onlineTime": "35h 25m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-04",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 10949,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-04-06",
+    "got": "2026-04-06",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-05-06",
+    "got": "2026-05-06",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 183.78,
+    "got": 183.78,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 880,
+    "got": 880,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Apr 06",
+   "rangeEnd": "May 06, 2026",
+   "earnings": 183.78,
+   "activeTime": "14h 40m",
+   "onlineTime": "18h 51m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-05",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 11055,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-10-19",
+    "got": "2026-10-19",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-11-18",
+    "got": "2026-11-18",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 293.9,
+    "got": 293.9,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 724,
+    "got": null,
+    "ok": false
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Oct 19",
+   "rangeEnd": "Nov 18, 2026",
+   "earnings": 293.9,
+   "activeTime": "30",
+   "onlineTime": "21h 32m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "vol-00",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 12600,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Northside Community Pantry",
+    "got": "Northside Community Pantry",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-06-04",
+    "got": "2026-06-04",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-06-25",
+    "got": "2026-06-25",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Northside Community Pantry",
+   "address": "3120 N Grand Blvd, St. Louis, MO 63107",
+   "periodStart": "06/04/2026",
+   "periodEnd": "06/25/2026",
+   "hours": 20,
+   "activity": "sorting and handing out food boxes",
+   "contact": "Grace Holloway"
+  }
+ }
+]

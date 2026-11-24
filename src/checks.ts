@@ -13,6 +13,9 @@ export function checkFields(f: Fields, month: string): Flag[] {
     if (!isDate(s)) return;
     const end = isDate(e) ? e! : s!;
     if (end < s!) flags.push({ field, message: "End date is before the start date." });
+    const days = (Date.parse(end) - Date.parse(s!)) / 86_400_000 + 1;
+    // Pay periods and gig summaries cover a month at most. A longer span usually means a misread year.
+    if (days > 35) flags.push({ field, message: `These dates span ${Math.round(days)} days. Check the year.` });
     if (end.slice(0, 7) < month && s!.slice(0, 7) < month) flags.push({ field, message: `Dates are before ${month}. Is this the right document?` });
     if (s!.slice(0, 7) > month) flags.push({ field, message: `Dates are after ${month}. Is this the right document?` });
   };
@@ -37,6 +40,7 @@ export function checkFields(f: Fields, month: string): Flag[] {
   } else if (f.type === "gig_summary") {
     need("rangeStart", f.rangeStart, "start date");
     need("earnings", f.earnings, "earnings");
+    need("activeMinutes", f.activeMinutes, "active time");
     if (f.activeMinutes !== null && f.onlineMinutes !== null && f.activeMinutes > f.onlineMinutes) {
       flags.push({ field: "activeMinutes", message: "Active time is longer than online time. Check the screenshot." });
     }
