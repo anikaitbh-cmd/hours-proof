@@ -1,3 +1,6 @@
+import "@uswds/uswds/css/uswds.min.css";
+import "./styles.css";
+import sprite from "@uswds/uswds/img/sprite.svg?url";
 import { getCloudModel, loadRemoteConfig, nanoState, SIMULATE_NO_NANO, warmUpNano, type NanoState } from "./ai";
 import { checkFields } from "./checks";
 import { checkRules, cloudPayload, draftReply, PLACEHOLDERS, type RuleCheck } from "./cloud";
@@ -70,12 +73,16 @@ function emptyFields(type: DocType): Fields {
   return f as unknown as Fields;
 }
 
+/** A USWDS icon from the package's own sprite. */
+const icon = (name: string, cls = "") =>
+  `<svg class="usa-icon ${cls}" aria-hidden="true" focusable="false" role="img"><use href="${sprite}#${name}"></use></svg>`;
+
 function badge(where?: Where, ms?: number, sample?: boolean) {
   if (!where) return "";
   const t = ms ? ` · ${(ms / 1000).toFixed(1)} s` : "";
-  if (where === "on_device") return `<span class="badge device">On device · Gemini Nano${t}</span>`;
-  if (where === "in_cloud") return `<span class="badge cloud">Cloud · Gemini${sample ? " · fictional sample" : ""}${t}</span>`;
-  return `<span class="badge hand">Typed by hand</span>`;
+  if (where === "on_device") return `<span class="usa-tag hp-tag--device">On device · Gemini Nano${t}</span>`;
+  if (where === "in_cloud") return `<span class="usa-tag hp-tag--cloud">Cloud · Gemini${sample ? " · fictional sample" : ""}${t}</span>`;
+  return `<span class="usa-tag hp-tag--hand">Typed by hand</span>`;
 }
 
 function openFlags(d: Doc) {
@@ -89,66 +96,95 @@ function render() {
   const reading = S.docs.some((d) => d.status === "reading");
   const anySample = S.docs.some((d) => d.sample);
   const meets = totals.meetsHours || totals.meetsIncome;
+  const docsDone = S.docs.length > 0 && !reading && flagged === 0;
+  const freshRules = !!S.rules && S.rules.forPayload === cloudPayload(totals);
 
   $app.innerHTML = `
-  <header class="top">
-    <div class="brand"><img src="/favicon.svg" alt="" width="28" height="28"><span>Hours Proof</span></div>
-    <div class="pills">
-      ${anySample ? `<span class="pill sample">Fictional client, fictional documents</span>` : ""}
-      <span class="pill ${S.online ? "on" : "off"}">${S.online ? "Online" : "Offline"}</span>
-      <span class="pill ${S.nano === "available" ? "on" : "warn"}">${nanoLabel()}</span>
+  <a class="usa-skipnav" href="#main">Skip to main content</a>
+  ${anySample ? `<div class="hp-demo"><div class="grid-container">Fictional client and documents, made up for this demo.</div></div>` : ""}
+  <header class="hp-header"><div class="grid-container hp-header__inner">
+    <div class="usa-logo hp-logo"><em class="usa-logo__text">Hours Proof</em><span class="hp-logo__sub">for Medicaid enrollment assisters</span></div>
+    <ul class="usa-list usa-list--unstyled hp-status">
+      <li class="${S.online ? "" : "is-off"}">${icon("wifi")}${S.online ? "Online" : "Offline"}</li>
+      <li class="${S.nano === "available" ? "" : "is-warn"}">${icon(S.nano === "available" ? "check_circle" : "info")}${nanoLabel()}</li>
+    </ul>
+  </div></header>
+
+  <main id="main" class="grid-container hp-main">
+    ${nanoBanner()}
+    ${S.error ? `<div class="usa-alert usa-alert--error usa-alert--slim" role="alert"><div class="usa-alert__body"><p class="usa-alert__text">${esc(S.error)} <button data-act="dismiss" class="usa-button usa-button--unstyled">Dismiss</button></p></div></div>` : ""}
+    ${steps([
+      ["Documents", docsDone],
+      ["Totals", docsDone && meets],
+      ["Rules", freshRules],
+      ["Reply", !!S.reply],
+    ])}
+    <div class="hp-title">
+      <h1>${esc(monthName(S.month))}</h1>
+      <div><label class="usa-label" for="month">Month the state asked about</label>
+      <input class="usa-input" type="month" id="month" value="${S.month}"></div>
     </div>
-  </header>
 
-  ${nanoBanner()}
-  ${S.error ? `<div class="alert" role="alert">${esc(S.error)} <button data-act="dismiss" class="link">Dismiss</button></div>` : ""}
-
-  <main class="grid">
-    <section class="col">
-      <div class="step">
-        <h2><span class="n">1</span> Documents</h2>
-        <p class="sub">Pay stubs, gig app summaries, volunteer letters, school records. They're read on this laptop and never uploaded.</p>
-        <label class="drop" id="drop">
+    <div class="grid-row grid-gap-lg">
+      <section class="desktop:grid-col-7 hp-col" aria-labelledby="h-docs">
+        <h2 class="hp-h2" id="h-docs">Documents</h2>
+        <p class="hp-lead">Pay stubs, gig app summaries, volunteer letters and school records. They're read on this laptop and never uploaded.</p>
+        <label class="hp-drop" id="drop">
           <input type="file" id="file" accept="image/png,image/jpeg,image/webp,image/heic" multiple hidden>
-          <strong>Drop document photos here</strong><span>or click to choose files</span>
+          ${icon("file_upload", "usa-icon--size-4")}<span>Drag photos of the documents here or <span class="hp-choose">choose from a folder</span></span>
         </label>
-        ${S.docs.length === 0 ? `<button class="btn ghost wide" data-act="samples">Try it with Dana's fictional documents</button>` : ""}
-        <div class="docs">${S.docs.map(docCard).join("")}</div>
-      </div>
-    </section>
+        ${S.docs.length === 0 ? `<button class="usa-button usa-button--outline hp-samples" data-act="samples">Try it with Dana's fictional documents</button>` : ""}
+        ${S.docs.length ? `<div class="hp-docs">${S.docs.map(docRow).join("")}</div>` : ""}
+      </section>
 
-    <section class="col">
-      <div class="step">
-        <h2><span class="n">2</span> ${esc(monthName(S.month))}</h2>
-        <label class="month">Month the state is asking about <input type="month" id="month" value="${S.month}"></label>
-        ${meter("Hours of work, school or volunteering", totals.totalHours, RULE.hoursPerMonth, `${hrs(totals.totalHours)} of ${RULE.hoursPerMonth} hours`)}
-        ${meter(`Pay (80 hours × $${RULE.federalMinWage} federal minimum wage)`, totals.income, RULE.incomeRoute, `${money(totals.income)} of ${money(RULE.incomeRoute)}`)}
-        ${S.docs.length ? verdict(totals, flagged, reading) : `<p class="muted">Add documents to see the month.</p>`}
+      <section class="desktop:grid-col-5 hp-col" aria-labelledby="h-totals">
+        <h2 class="hp-h2" id="h-totals">Totals</h2>
+        <div class="usa-summary-box hp-totals" role="region" aria-label="Totals for ${esc(monthName(S.month))}"><div class="usa-summary-box__body">
+          ${meter("Hours of work, school or volunteering", totals.totalHours, RULE.hoursPerMonth, `${hrs(totals.totalHours)} of ${RULE.hoursPerMonth}`)}
+          ${meter("Pay", totals.income, RULE.incomeRoute, `${money(totals.income)} of ${`$${RULE.incomeRoute}`}`)}
+          ${S.docs.length ? verdict(totals, flagged, reading) : `<p class="hp-verdict">Add documents to see the month.</p>`}
+          <p class="hp-note">${`$${RULE.incomeRoute}`} is ${RULE.hoursPerMonth} hours at the $${RULE.federalMinWage} federal minimum wage.</p>
+        </div></div>
         ${lines.length ? `
-        <table class="ledger">
-          <thead><tr><th>Source</th><th>Counted</th><th class="r">Hours</th><th class="r">Pay</th></tr></thead>
+        <table class="usa-table usa-table--borderless usa-table--compact hp-ledger">
+          <caption class="usa-sr-only">What counts toward ${esc(monthName(S.month))}</caption>
+          <thead><tr><th scope="col">Source</th><th scope="col">Counted</th><th scope="col" class="r">Hours</th><th scope="col" class="r">Pay</th></tr></thead>
           <tbody>${lines.map((l) => `
-            <tr><td>${esc(l.label)}${l.note ? `<div class="note">${esc(l.note)}</div>` : ""}</td>
+            <tr><td>${esc(l.label)}${l.note ? `<div class="hp-sub">${esc(l.note)}</div>` : ""}</td>
             <td>${l.share >= 0.999 ? "All" : l.share === 0 ? "Other month" : Math.round(l.share * 100) + "%"}</td>
             <td class="r">${l.hours ? hrs(l.hours) : "–"}</td><td class="r">${l.income ? money(l.income) : "–"}</td></tr>`).join("")}
           </tbody>
           <tfoot><tr><td colspan="2">Total</td><td class="r">${hrs(totals.totalHours)}</td><td class="r">${money(totals.income)}</td></tr></tfoot>
         </table>
-        <p class="fine">All math is plain code. No model adds up hours or pay. Pay periods that cross months are counted by the share of days inside ${esc(monthName(S.month))}.</p>` : ""}
-      </div>
+        <p class="hp-hint">The math is plain code. No model adds up hours or pay. A pay period that crosses months counts by the share of its days inside ${esc(monthName(S.month))}.</p>` : ""}
 
-      <div class="step">
-        <h2><span class="n">3</span> Rules and reply</h2>
+        <h2 class="hp-h2">Missouri's rules</h2>
         ${rulesBlock(totals)}
-        ${replyBlock(totals, meets, flagged, reading)}
-      </div>
-    </section>
-  </main>
 
-  ${howItRan()}
-  <footer class="foot">Fictional examples only. Hours Proof helps an assister prepare proof; it is not legal advice, and the state makes the decision.</footer>
+        <h2 class="hp-h2">Reply to the state</h2>
+        ${replyBlock(totals, meets, flagged, reading)}
+      </section>
+    </div>
+
+    ${howItRan()}
+  </main>
+  <footer class="hp-footer"><div class="grid-container">Every example here is fictional. Hours Proof helps an assister prepare proof. It isn't legal advice, and the state makes the decision.</div></footer>
   <div id="print"></div>`;
   bind();
+}
+
+/** USWDS step indicator with counters. The current step is the first one not yet complete. */
+function steps(list: [label: string, done: boolean][]) {
+  let cur = list.findIndex(([, done]) => !done);
+  if (cur === -1) cur = list.length - 1;
+  const allDone = list.every(([, d]) => d);
+  return `<div class="usa-step-indicator usa-step-indicator--counters-sm" aria-label="Progress">
+    <ol class="usa-step-indicator__segments">${list.map(([label, done], i) => {
+      const state = done && !(allDone && i === cur) ? "complete" : i === cur ? "current" : "";
+      return `<li class="usa-step-indicator__segment ${state ? `usa-step-indicator__segment--${state}` : ""}" ${state === "current" ? 'aria-current="true"' : ""}>
+        <span class="usa-step-indicator__segment-label">${label}${state === "complete" ? ' <span class="usa-sr-only">completed</span>' : state ? "" : ' <span class="usa-sr-only">not completed</span>'}</span></li>`;
+    }).join("")}</ol>
+  </div>`;
 }
 
 function nanoLabel() {
@@ -162,132 +198,135 @@ function nanoLabel() {
 
 function nanoBanner() {
   if (S.nano === "downloadable" || S.nano === "downloading") {
-    return `<div class="banner">
-      <div><strong>Set up on-device reading.</strong> Chrome downloads Gemini Nano once, then documents are read with no network at all.</div>
+    return `<div class="usa-alert usa-alert--info"><div class="usa-alert__body">
+      <h2 class="usa-alert__heading">Set up on-device reading</h2>
+      <p class="usa-alert__text">Chrome downloads Gemini Nano once. After that, documents are read with no network at all.</p>
       ${S.nano === "downloading" && S.nanoProgress !== null
         ? `<progress max="1" value="${S.nanoProgress}"></progress>`
-        : `<button class="btn" data-act="nano">Set up Gemini Nano</button>`}
-    </div>`;
+        : `<button class="usa-button" data-act="nano">Set up Gemini Nano</button>`}
+    </div></div>`;
   }
   if (S.nano === "no-api" || S.nano === "unavailable") {
-    return `<div class="banner quiet">
-      <div><strong>${SIMULATE_NO_NANO ? "Simulating a browser without Gemini Nano." : "This browser can't run Gemini Nano."}</strong> Client documents are never sent to the cloud instead, so you type their numbers in and everything else still works.
-      The fictional samples can be read in the cloud so you can see the flow. Desktop Chrome runs it on device.</div>
-    </div>`;
+    return `<div class="usa-alert usa-alert--warning"><div class="usa-alert__body">
+      <h2 class="usa-alert__heading">${SIMULATE_NO_NANO ? "Simulating a browser without Gemini Nano" : "This browser can't run Gemini Nano"}</h2>
+      <p class="usa-alert__text">Client documents are never sent to the cloud instead. You type their numbers in, and everything else still works.
+      The fictional samples can be read in the cloud so you can see the flow. Desktop Chrome runs it on device.</p>
+    </div></div>`;
   }
   return "";
 }
 
 function meter(label: string, value: number, goal: number, text: string) {
   const pct = Math.min(100, (value / goal) * 100);
-  return `<div class="meter ${value >= goal ? "met" : ""}">
-    <div class="meter-top"><span>${esc(label)}</span><strong>${esc(text)}</strong></div>
-    <div class="bar"><i style="width:${pct}%"></i></div></div>`;
+  return `<div class="hp-meter ${value >= goal ? "is-met" : ""}">
+    <div class="hp-meter__top"><span>${esc(label)}</span><strong>${esc(text)}</strong></div>
+    <div class="hp-meter__bar"><i style="width:${pct}%"></i></div></div>`;
 }
 
 function verdict(t: ReturnType<typeof ledger>["totals"], flagged: number, reading: boolean) {
-  if (reading) return `<div class="verdict wait">Reading documents…</div>`;
-  if (flagged) return `<div class="verdict wait">${flagged} item${flagged > 1 ? "s" : ""} to check before the month is final.</div>`;
-  if (t.meetsHours) return `<div class="verdict ok">Meets the requirement with ${hrs(t.totalHours)} hours${t.schoolHalfTime ? " (school, at least half-time)" : ""}.</div>`;
-  if (t.meetsIncome) return `<div class="verdict ok">${hrs(t.totalHours)} hours is short of 80, but pay of ${money(t.income)} meets the ${money(RULE.incomeRoute)} income route.</div>`;
-  return `<div class="verdict short">Short: ${hrs(RULE.hoursPerMonth - t.totalHours)} more hours or ${money(RULE.incomeRoute - t.income)} more pay needed for ${esc(monthName(t.month))}.</div>`;
+  if (reading) return `<p class="hp-verdict">Reading documents…</p>`;
+  if (flagged) return `<p class="hp-verdict">${icon("flag")}${flagged} item${flagged > 1 ? "s" : ""} to check before the month is final.</p>`;
+  if (t.meetsHours) return `<p class="hp-verdict">Meets the requirement with ${hrs(t.totalHours)} hours${t.schoolHalfTime ? " (school, at least half-time)" : ""}.</p>`;
+  if (t.meetsIncome) return `<p class="hp-verdict">${hrs(t.totalHours)} hours is short of 80, but ${money(t.income)} of pay meets the ${`$${RULE.incomeRoute}`} income route.</p>`;
+  return `<p class="hp-verdict">Short by ${hrs(RULE.hoursPerMonth - t.totalHours)} hours or ${money(RULE.incomeRoute - t.income)} of pay for ${esc(monthName(t.month))}.</p>`;
 }
 
-function docCard(d: Doc) {
+function docRow(d: Doc) {
   const type = d.fields?.type ?? "other";
   const flags = openFlags(d);
-  const head = `<div class="doc-head">
-      <img src="${d.imageUrl}" alt="${esc(d.name)}" class="thumb" data-act="zoom" data-id="${d.id}">
-      <div class="doc-title">
-        <strong>${d.fields ? TYPE_LABEL[type] : esc(d.name)}</strong>
-        <span class="muted small">${esc(d.name)}${d.sample ? " · fictional" : ""}</span>
-        <div>${d.status === "reading" ? `<span class="badge busy">${d.sample || S.nano === "available" ? "Reading…" : "Waiting"}</span>` : badge(d.where, d.ms, d.sample)}</div>
+  const head = `<div class="hp-doc__head">
+      <img src="${d.imageUrl}" alt="Photo of ${esc(d.name)}" class="hp-doc__thumb" data-act="zoom" data-id="${d.id}">
+      <div class="hp-doc__title">
+        <h3>${d.fields ? TYPE_LABEL[type] : esc(d.name)}</h3>
+        <p class="hp-doc__file">${esc(d.name)}${d.sample ? " · fictional" : ""}</p>
+        ${d.status === "reading" ? `<span class="usa-tag hp-tag--busy">${d.sample || S.nano === "available" ? "Reading…" : "Waiting"}</span>` : badge(d.where, d.ms, d.sample)}
       </div>
-      <button class="x" data-act="remove" data-id="${d.id}" aria-label="Remove ${esc(d.name)}">×</button>
+      <button class="usa-button usa-button--unstyled hp-doc__remove" data-act="remove" data-id="${d.id}" aria-label="Remove ${esc(d.name)}">${icon("close")}Remove</button>
     </div>`;
-  if (d.status === "reading") return `<article class="doc">${head}</article>`;
-  if (d.status === "error") return `<article class="doc err">${head}<p class="small">${esc(d.error)}</p></article>`;
-  const typeSelect = `<label class="field"><span>Type</span><select data-act="type" data-id="${d.id}">
+  if (d.status === "reading") return `<article class="hp-doc">${head}</article>`;
+  if (d.status === "error") return `<article class="hp-doc">${head}<div class="usa-alert usa-alert--error usa-alert--slim"><div class="usa-alert__body"><p class="usa-alert__text">${esc(d.error)}</p></div></div></article>`;
+  const typeSelect = `<div class="usa-form-group"><label class="usa-label" for="${d.id}-type">Type</label>
+    <select class="usa-select" id="${d.id}-type" data-act="type" data-id="${d.id}">
       ${(Object.keys(TYPE_LABEL) as DocType[]).map((t) => `<option value="${t}" ${t === type ? "selected" : ""}>${TYPE_LABEL[t]}</option>`).join("")}
-    </select></label>`;
+    </select></div>`;
   const note = d.status === "needs_entry"
-    ? `<p class="small hand-note">${esc(d.error || "Gemini Nano isn't available here, so this document wasn't read. Type the numbers from it.")}</p>` : "";
+    ? `<div class="usa-alert usa-alert--info usa-alert--slim"><div class="usa-alert__body"><p class="usa-alert__text">${esc(d.error || "Gemini Nano isn't available here, so this document wasn't read. Type the numbers from it.")}</p></div></div>` : "";
   const fields = (FIELD_DEFS[type] ?? []).map(([k, label, kind]) => {
     const v = (d.fields as unknown as Record<string, unknown> | undefined)?.[k];
     const flag = flags.find((f) => f.field === k);
-    return `<label class="field ${flag ? "flag" : ""} ${kind === "text" && (k === "address" || k === "activity") ? "span2" : ""}">
-      <span>${label}</span>
-      <input data-act="field" data-id="${d.id}" data-key="${k}" data-kind="${kind}"
+    return `<div class="usa-form-group ${flag ? "is-flagged" : ""} ${kind === "text" && (k === "address" || k === "activity") ? "span2" : ""}">
+      <label class="usa-label" for="${d.id}-${k}">${label}</label>
+      <input class="usa-input" id="${d.id}-${k}" data-act="field" data-id="${d.id}" data-key="${k}" data-kind="${kind}"
         type="${kind === "date" ? "date" : kind === "text" ? "text" : "number"}" ${kind === "money" || kind === "num" ? 'step="0.01"' : ""}
-        value="${v === null || v === undefined ? "" : esc(v)}"></label>`;
+        value="${v === null || v === undefined ? "" : esc(v)}"></div>`;
   }).join("");
-  const flagList = flags.map((f) => `<div class="flagmsg"><span>${esc(f.message)}</span>
-      <button class="btn small" data-act="confirm" data-id="${d.id}" data-key="${f.field}">It's right</button></div>`).join("");
-  return `<article class="doc ${flags.length ? "has-flag" : ""}">${head}${note}${flagList}<div class="fields">${typeSelect}${fields}</div></article>`;
+  const flagList = flags.map((f) => `<div class="hp-flag"><p>${icon("flag")}${esc(f.message)}</p>
+      <button class="usa-button usa-button--outline" data-act="confirm" data-id="${d.id}" data-key="${f.field}">It's right</button></div>`).join("");
+  return `<article class="hp-doc ${flags.length ? "is-flagged" : ""}">${head}${note}${flagList}<div class="hp-fields">${typeSelect}${fields}</div></article>`;
 }
 
 function rulesBlock(t: ReturnType<typeof ledger>["totals"]) {
   const r = S.rules;
   const stale = !!r && r.forPayload !== cloudPayload(t);
   const consent = S.consent ? `
-    <div class="consent">
-      <div class="consent-head"><strong>This is everything that will be sent</strong><span class="badge cloud">Cloud · Gemini · ${esc(getCloudModel())}</span></div>
-      <pre>${esc(cloudPayload(t))}</pre>
-      <p class="small">No names, employers, addresses, images or document text. Gemini reads only these public pages:</p>
-      <ul class="src">${RULE_SOURCES.map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>
-      <div class="row"><button class="btn" data-act="send-rules" ${S.rulesBusy ? "disabled" : ""}>${S.rulesBusy ? "Checking…" : "Send totals and check"}</button>
-      <button class="btn ghost" data-act="cancel-consent">Cancel</button></div>
+    <div class="hp-panel">
+      <div class="hp-panel__head"><h3>This is everything that will be sent</h3><span class="usa-tag hp-tag--cloud">Cloud · ${esc(getCloudModel())}</span></div>
+      <pre class="hp-pre">${esc(cloudPayload(t))}</pre>
+      <p>No names, employers, addresses, images or document text. Gemini reads only these public pages:</p>
+      <ul class="usa-list">${RULE_SOURCES.map((s) => `<li><a class="usa-link usa-link--external" href="${s.url}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>
+      <div class="hp-actions"><button class="usa-button" data-act="send-rules" ${S.rulesBusy ? "disabled" : ""}>${S.rulesBusy ? "Checking…" : "Send totals and check"}</button>
+      <button class="usa-button usa-button--unstyled" data-act="cancel-consent">Cancel</button></div>
     </div>` : "";
   const result = r ? `
-    <div class="rules">
-      <div class="rules-head"><strong>${stale ? "Rules checked for different totals" : r.status === "meets" ? "Meets the rules as checked" : r.status === "short" ? "Short under the rules as checked" : "Rules check: some things are open"}</strong>
+    <div class="hp-panel">
+      <div class="hp-panel__head"><h3>${stale ? "Rules checked for different totals" : r.status === "meets" ? "Meets the rules as checked" : r.status === "short" ? "Short under the rules as checked" : "Some things are still open"}</h3>
         ${badge(r.where)}</div>
-      <p>${stale ? "The totals have changed since this check. The rules below still apply; check again for a verdict on these totals." : esc(r.summary)}</p>
-      <ul class="rule-list">${r.rules.map((x) => `<li class="${x.applies && !stale ? "yes" : ""}"><strong>${esc(x.rule)}</strong> ${esc(x.detail)}
-        ${x.sourceUrl ? `<a href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">source</a>` : ""}</li>`).join("")}</ul>
-      ${r.startDate ? `<p class="small"><strong>Start date:</strong> ${esc(r.startDate)}</p>` : ""}
-      ${r.openQuestions.length && !stale ? `<p class="small"><strong>Still open:</strong> ${r.openQuestions.map(esc).join(" · ")}</p>` : ""}
-      <p class="fine">Rules last checked ${new Date(r.checkedAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}${r.sourcesRead.length ? ` · ${r.sourcesRead.length} of ${RULE_SOURCES.length} pages read` : ""}. Missouri can still change its start date.</p>
-    </div>` : `<p class="muted">Missouri's rules haven't been checked on this computer yet.</p>`;
+      <p>${stale ? "The totals have changed since this check. The rules below still apply. Check again for a result on these totals." : esc(r.summary)}</p>
+      <ul class="usa-list usa-list--unstyled hp-rules">${r.rules.map((x) => `<li>${x.applies && !stale ? icon("check") : `<span class="hp-dot"></span>`}<span><strong>${esc(x.rule.replace(/\.+$/, ""))}.</strong> ${esc(x.detail)}
+        ${x.sourceUrl ? `<a class="usa-link usa-link--external" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">Source</a>` : ""}</span></li>`).join("")}</ul>
+      ${r.startDate ? `<p><strong>Start date.</strong> ${esc(r.startDate)}</p>` : ""}
+      ${r.openQuestions.length && !stale ? `<p><strong>Still open.</strong> ${r.openQuestions.map(esc).join(" ")}</p>` : ""}
+      <p class="hp-hint">Checked ${new Date(r.checkedAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}${r.sourcesRead.length ? `, ${r.sourcesRead.length} of ${RULE_SOURCES.length} pages read` : ""}. Missouri can still change its start date.</p>
+    </div>` : S.consent ? "" : `<p>Missouri's rules haven't been checked on this computer yet.</p>`;
   const can = S.docs.length > 0 && S.online;
-  return `${result}${consent}${!S.consent ? `<button class="btn ${r ? "ghost" : ""}" data-act="consent" ${can ? "" : "disabled"}>
+  return `${result}${consent}${!S.consent ? `<div class="hp-actions"><button class="usa-button ${r ? "usa-button--outline" : ""}" data-act="consent" ${can ? "" : "disabled"}>
       ${r ? "Check the rules again" : "Check Missouri's rules"}</button>
-      ${!S.online ? `<span class="small muted"> Needs internet. Everything else works offline.</span>` : ""}` : ""}`;
+      ${!S.online ? `<span class="hp-hint">Needs internet. Everything else works offline.</span>` : ""}</div>` : ""}`;
 }
 
 function replyBlock(t: ReturnType<typeof ledger>["totals"], meets: boolean, flagged: number, reading: boolean) {
+  void t;
   const ready = meets && !flagged && !reading && S.docs.length > 0;
-  const why = !S.docs.length ? "Add documents first." : reading ? "Waiting for documents." : flagged ? "Check the highlighted items first." : !meets ? "The month doesn't meet the requirement yet, so there's nothing to claim." : "";
-  const letter = S.reply ? `
-    <div class="reply">
-      <div class="reply-head"><strong>Reply to the state's notice</strong>${badge(S.reply.where, S.reply.ms)}</div>
-      <div class="fill">${PLACEHOLDERS.map((p) => `<label class="field"><span>${esc(p.slice(1, -1).toLowerCase())}</span>
-        <input data-act="fill" data-key="${esc(p)}" value="${esc(S.fill[p])}" placeholder="${p === "[NOTICE DATE]" ? "e.g. March 2, 2027" : ""}"></label>`).join("")}</div>
-      <p class="fine">Names you type here stay on this laptop. They're filled in after the draft is written.</p>
-      <pre class="letter" id="letter">${esc(filled(S.reply.text))}</pre>
-      <div class="row"><button class="btn" data-act="packet">Export reply + proof packet</button>
-      <button class="btn ghost" data-act="redraft">Draft again</button></div>
-    </div>` : "";
-  return `<div class="reply-zone">${letter}${!S.reply ? `<button class="btn" data-act="draft" ${ready && !S.replyBusy ? "" : "disabled"}>
-      ${S.replyBusy ? "Drafting…" : "Draft the reply"}</button>
-      <span class="small muted">${why || (S.online ? "Runs on Gemini Nano when available, otherwise in the cloud with totals only." : "Offline: Gemini Nano drafts it on this laptop.")}</span>` : ""}</div>`;
+  const why = !S.docs.length ? "Add documents first." : reading ? "Waiting for documents." : flagged ? "Check the flagged items first." : !meets ? "The month doesn't meet the requirement yet, so there's nothing to claim." : "";
+  if (S.reply) return `
+    <div class="hp-panel">
+      <div class="hp-panel__head">${badge(S.reply.where, S.reply.ms)}</div>
+      <div class="hp-fill">${PLACEHOLDERS.map((p, i) => `<div><label class="usa-label" for="fill-${i}">${esc(p.slice(1, -1).charAt(0) + p.slice(2, -1).toLowerCase())}</label>
+        <input class="usa-input" id="fill-${i}" data-act="fill" data-key="${esc(p)}" value="${esc(S.fill[p])}" placeholder="${p === "[NOTICE DATE]" ? "March 2, 2027" : ""}"></div>`).join("")}</div>
+      <p class="hp-hint">Names typed here stay on this laptop. They're filled in after the draft is written.</p>
+      <pre class="hp-letter" id="letter">${esc(filled(S.reply.text))}</pre>
+      <div class="hp-actions"><button class="usa-button" data-act="packet">${icon("print")} Export reply and proof</button>
+      <button class="usa-button usa-button--outline" data-act="redraft">Draft again</button></div>
+    </div>`;
+  return `<div class="hp-actions"><button class="usa-button" data-act="draft" ${ready && !S.replyBusy ? "" : "disabled"}>${S.replyBusy ? "Drafting…" : "Draft the reply"}</button></div>
+    <p class="hp-hint">${why || (S.online ? "Runs on Gemini Nano when it's available, otherwise in the cloud from totals only." : "Offline, so Gemini Nano drafts it on this laptop.")}</p>`;
 }
 
 const filled = (text: string) => PLACEHOLDERS.reduce((s, p) => (S.fill[p] ? s.split(p).join(S.fill[p]) : s), text);
 
 function howItRan() {
   const blocked = blockedRequests();
-  return `<details class="how" ${S.howOpen ? "open" : ""}>
+  return `<details class="hp-how" ${S.howOpen ? "open" : ""}>
     <summary>How it ran</summary>
-    <div class="how-grid">
-      <div><h3>Model calls</h3>${S.log.length ? `<table><tbody>${S.log.map((l) => `<tr><td>${esc(l.step)}</td><td>${badge(l.where)}</td><td class="r">${(l.ms / 1000).toFixed(1)} s</td></tr>`).join("")}</tbody></table>` : `<p class="muted small">None yet.</p>`}</div>
-      <div><h3>Routing</h3><ul class="small">
-        <li><strong>Client documents:</strong> <code>ONLY_ON_DEVICE</code>, after our own <code>LanguageModel.availability()</code> check. No Nano means no reading, never the cloud.</li>
-        <li><strong>Fictional samples:</strong> <code>PREFER_ON_DEVICE</code>, so they work anywhere.</li>
-        <li><strong>Rules:</strong> <code>ONLY_IN_CLOUD</code> with URL context over ${RULE_SOURCES.length} public pages. Totals only.</li>
-        <li><strong>Reply:</strong> <code>PREFER_ON_DEVICE</code>. Totals only, so either side is safe.</li>
-        <li><strong>Leak guard:</strong> ${blocked.length} request${blocked.length === 1 ? "" : "s"} blocked this session.</li>
-        <li><strong>Cloud model:</strong> ${esc(getCloudModel())} (Remote Config). App Check: reCAPTCHA Enterprise, limited-use tokens.</li>
+    <div class="hp-how__body">
+      <div><h3>Model calls</h3>${S.log.length ? `<table class="usa-table usa-table--borderless usa-table--compact"><tbody>${S.log.map((l) => `<tr><td>${esc(l.step)}</td><td>${badge(l.where)}</td><td>${(l.ms / 1000).toFixed(1)} s</td></tr>`).join("")}</tbody></table>` : `<p class="hp-hint">None yet.</p>`}</div>
+      <div><h3>Routing</h3><ul class="usa-list">
+        <li>Client documents use <code>ONLY_ON_DEVICE</code>, after our own <code>LanguageModel.availability()</code> check. No Nano means no reading, never the cloud.</li>
+        <li>Fictional samples use <code>PREFER_ON_DEVICE</code>, so they work anywhere.</li>
+        <li>The rules check uses <code>ONLY_IN_CLOUD</code> with URL context over ${RULE_SOURCES.length} public pages, and sends totals only.</li>
+        <li>The reply uses <code>PREFER_ON_DEVICE</code>. It's written from totals, so either side is safe.</li>
+        <li>The leak guard blocked ${blocked.length} request${blocked.length === 1 ? "" : "s"} this session.</li>
+        <li>Cloud model ${esc(getCloudModel())}, set in Remote Config. App Check uses reCAPTCHA Enterprise with limited-use tokens.</li>
       </ul></div>
     </div></details>`;
 }
@@ -307,7 +346,7 @@ function bind() {
     const v = (e.target as HTMLInputElement).value;
     if (v) { S.month = v; S.reply = null; recheckAll(); render(); }
   };
-  const how = document.querySelector("details.how") as HTMLDetailsElement;
+  const how = document.querySelector("details.hp-how") as HTMLDetailsElement;
   how.ontoggle = () => (S.howOpen = how.open);
 }
 
@@ -476,8 +515,8 @@ async function runReply() {
 
 function zoom(d: Doc) {
   const dlg = document.createElement("dialog");
-  dlg.className = "zoom";
-  dlg.innerHTML = `<img src="${d.imageUrl}" alt="${esc(d.name)}"><form method="dialog"><button class="btn">Close</button></form>`;
+  dlg.className = "hp-zoom";
+  dlg.innerHTML = `<img src="${d.imageUrl}" alt="${esc(d.name)}"><form method="dialog"><button class="usa-button">Close</button></form>`;
   document.body.appendChild(dlg);
   dlg.addEventListener("close", () => dlg.remove());
   dlg.showModal();
@@ -490,13 +529,13 @@ function exportPacket() {
   const docs = [...S.docs].filter((d) => d.fields).sort((a, b) => ORDER.indexOf(a.fields!.type) - ORDER.indexOf(b.fields!.type));
   const p = document.getElementById("print")!;
   p.innerHTML = `
-    <section class="pp"><pre class="letter">${esc(filled(S.reply?.text ?? ""))}</pre></section>
+    <section class="pp"><pre class="hp-letter">${esc(filled(S.reply?.text ?? ""))}</pre></section>
     <section class="pp"><h1>Proof summary · ${esc(monthName(S.month))}</h1>
       <p>Total hours: <strong>${hrs(totals.totalHours)}</strong> (work ${hrs(totals.workHours)}, volunteering ${hrs(totals.volunteerHours)}).
       Monthly pay: <strong>${money(totals.income)}</strong>, including ${money(totals.gigIncome)} from gig apps.</p>
-      <p>Requirement: ${RULE.hoursPerMonth} hours a month, or pay of at least ${money(RULE.incomeRoute)} (${RULE.hoursPerMonth} × $${RULE.federalMinWage}).
+      <p>Requirement: ${RULE.hoursPerMonth} hours a month, or pay of at least ${`$${RULE.incomeRoute}`} (${RULE.hoursPerMonth} × $${RULE.federalMinWage}).
       Result: ${totals.meetsHours ? "meets through hours" : totals.meetsIncome ? "meets through the income route" : "does not meet"}.</p>
-      <table class="ledger"><thead><tr><th>Document</th><th>Counted</th><th>Hours</th><th>Pay</th></tr></thead><tbody>
+      <table><thead><tr><th>Document</th><th>Counted</th><th>Hours</th><th>Pay</th></tr></thead><tbody>
       ${lines.map((l, i) => `<tr><td>${i + 1}. ${esc(l.label)}</td><td>${l.share >= 0.999 ? "All" : Math.round(l.share * 100) + "%"}</td><td>${l.hours ? hrs(l.hours) : "–"}</td><td>${l.income ? money(l.income) : "–"}</td></tr>`).join("")}
       </tbody></table>
       ${S.rules ? `<p class="fine">Rules checked ${new Date(S.rules.checkedAt).toLocaleDateString("en-US", { dateStyle: "medium" })} against: ${RULE_SOURCES.map((s) => esc(s.url)).join(" · ")}</p>` : ""}

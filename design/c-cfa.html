@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hours Proof · Option C (Code for America)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Modeled on GetCalFresh.org (Code for America): cream page, pale yellow header bar, dark serif
+   headings, one deep green for actions, outlined secondary button, generous whitespace, rounded 6px. */
+:root { --ink:#1e1e1e; --muted:#5b5b5b; --cream:#fffdf3; --bar:#fff5cc; --green:#2c7a5b; --green-dark:#1f5c44; --line:#e6e0c8; --card:#ffffff; --mint:#e4f2ea; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--cream); color:var(--ink); font-family:"Source Sans 3", system-ui, sans-serif; font-size:18px; line-height:1.5; }
+.top { background:var(--bar); }
+.top-inner { max-width:1080px; margin:0 auto; padding:16px 40px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-weight:700; font-size:21px; display:flex; align-items:center; gap:10px; }
+.brand svg { width:26px; height:26px; }
+.top .btn-o { font-size:15px; padding:6px 14px; }
+main { max-width:1080px; margin:0 auto; padding:48px 40px; }
+.eyebrow { font-size:16px; color:var(--muted); margin:0 0 6px; }
+h1 { font-family:"Source Serif 4", Georgia, serif; font-weight:700; font-size:44px; line-height:1.1; margin:0 0 14px; max-width:720px; }
+.lede { font-size:19px; max-width:620px; margin:0 0 36px; }
+.grid { display:grid; grid-template-columns:3fr 2fr; gap:36px; align-items:start; }
+.doc { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:18px 20px; margin-bottom:12px; display:grid; grid-template-columns:1fr auto; gap:4px 16px; }
+.doc .t { font-weight:700; }
+.doc .s { color:var(--muted); font-size:16px; }
+.doc .v { text-align:right; font-weight:600; }
+.doc a { color:var(--green-dark); font-size:16px; }
+.month { background:var(--mint); border-radius:6px; padding:24px 26px; }
+.month h2 { font-family:"Source Serif 4", Georgia, serif; font-size:26px; margin:0 0 16px; }
+.row { display:flex; justify-content:space-between; border-bottom:1px solid #c7e0d1; padding:10px 0; }
+.row:last-of-type { border-bottom:0; }
+.verdict { font-family:"Source Serif 4", Georgia, serif; font-size:22px; margin:18px 0 0; }
+.note { font-size:15px; color:var(--muted); margin-top:10px; }
+.actions { margin-top:32px; display:flex; gap:14px; }
+.btn { font:inherit; font-weight:600; background:var(--green); color:#fff; border:2px solid var(--green); border-radius:6px; padding:12px 24px; cursor:pointer; }
+.btn-o { font:inherit; font-weight:600; background:transparent; color:var(--green-dark); border:2px solid var(--green); border-radius:6px; padding:12px 24px; cursor:pointer; }
+.local { display:inline-flex; gap:8px; align-items:center; font-size:15px; color:var(--green-dark); margin-top:6px; }
+footer { max-width:1080px; margin:0 auto; padding:24px 40px 48px; font-size:15px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="top"><div class="top-inner">
+  <span class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="#c4432b" stroke-width="2.2"><path d="M4 12.5l5 5L20 6"/></svg>Hours Proof</span>
+  <button class="btn-o">How it works</button>
+</div></div>
+<main>
+  <p class="eyebrow">Fictional client · January 2027</p>
+  <h1>Dana's month, ready to check</h1>
+  <p class="lede">Her four documents were read on this laptop. Nothing left the desk. Look over each one against the paper, then check Missouri's rules.</p>
+
+  <div class="grid">
+    <div>
+      <div class="doc"><div><div class="t">Pay stub</div><div class="s">Riverbend Grocery · Jan 3 – 16</div></div><div class="v">18 hours<br>$270.00</div><a href="#">Edit</a></div>
+      <div class="doc"><div><div class="t">Pay stub</div><div class="s">Riverbend Grocery · Jan 17 – 30</div></div><div class="v">12 hours<br>$180.00</div><a href="#">Edit</a></div>
+      <div class="doc"><div><div class="t">Volunteer letter</div><div class="s">Northside Community Pantry · Jan 2 – 30</div></div><div class="v">28 hours</div><a href="#">Edit</a></div>
+      <div class="doc"><div><div class="t">Gig app summary</div><div class="s">QuickCart Driver · 14 h 05 m active, not counted as hours</div></div><div class="v">$186.40</div><a href="#">Edit</a></div>
+      <div class="local">Read on this laptop with Gemini Nano</div>
+    </div>
+    <div class="month">
+      <h2>January 2027</h2>
+      <div class="row"><span>Hours</span><strong>58 of 80</strong></div>
+      <div class="row"><span>Pay</span><strong>$636.40 of $580</strong></div>
+      <p class="verdict">Dana meets the requirement through her pay.</p>
+      <p class="note">$580 is 80 hours at the $7.25 federal minimum wage.</p>
+    </div>
+  </div>
+  <div class="actions"><button class="btn">Check Missouri's rules</button><button class="btn-o">Add another document</button></div>
+</main>
+<footer>Hours Proof prepares proof. It isn't legal advice, and the state makes the decision.</footer>
+</body>
+</html>

@@ -4,6 +4,13 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [{
+    // USWDS ships Source Sans Pro as its default sans. Its own site uses Public Sans, so swap the family.
+    name: "uswds-public-sans",
+    enforce: "pre",
+    transform(code, id) {
+      if (id.includes("uswds.min.css")) return code.replaceAll("font-family:Source Sans Pro Web,", "font-family:Public Sans Web,");
+    },
+  }, {
     // Dev only: bench.html posts its results here, written to bench/last-run.json.
     name: "bench-save",
     configureServer(server) {

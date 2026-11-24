@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hours Proof · Option B (GOV.UK caseworker)</title>
+<style>
+/* Copied from GOV.UK Frontend 5 + MOJ patterns: text #0b0c0c, secondary #505a5f, link #1d70b8,
+   border #b1b4b6, button green #00703c with 2px shadow, summary list, inset text, tags, task list.
+   GDS Transport is licensed to gov.uk only, so Arial (its official fallback). */
+:root { --text:#0b0c0c; --sec:#505a5f; --link:#1d70b8; --border:#b1b4b6; --green:#00703c; --brand:#1d70b8; --light:#f3f2f1; }
+* { box-sizing:border-box; }
+body { margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--text); font-size:19px; line-height:1.32; background:#fff; }
+a { color:var(--link); text-underline-offset:.1578em; }
+.header { background:var(--brand); color:#fff; }
+.header-inner { max-width:960px; margin:0 auto; padding:14px 30px; display:flex; justify-content:space-between; align-items:center; }
+.header .name { font-weight:700; font-size:24px; }
+.header .who { font-size:16px; }
+.service { border-bottom:1px solid var(--border); }
+.service-inner { max-width:960px; margin:0 auto; padding:12px 30px; display:flex; gap:30px; font-size:16px; font-weight:700; }
+.service a { color:var(--text); text-decoration:none; }
+.service a.cur { color:var(--link); box-shadow: inset 0 -5px 0 var(--link); padding-bottom:9px; }
+.phase { max-width:960px; margin:0 auto; padding:10px 30px; font-size:16px; border-bottom:1px solid var(--border); }
+.phase strong { background:var(--link); color:#fff; padding:2px 8px; margin-right:10px; font-size:14px; }
+main { max-width:960px; margin:0 auto; padding:30px 30px 60px; }
+.caption { color:var(--sec); font-size:24px; display:block; margin-bottom:5px; }
+h1 { font-size:48px; margin:0 0 30px; line-height:1.04; }
+h2 { font-size:27px; margin:45px 0 15px; }
+.lede { font-size:24px; margin:0 0 30px; max-width:640px; }
+.grid { display:grid; grid-template-columns:2fr 1fr; gap:30px; }
+.sl { margin:0 0 20px; border-collapse:collapse; width:100%; }
+.sl th, .sl td { text-align:left; vertical-align:top; padding:10px 20px 10px 0; border-bottom:1px solid var(--border); }
+.sl th { font-weight:700; width:35%; }
+.sl td.act { text-align:right; padding-right:0; white-space:nowrap; }
+.sl .hint { display:block; color:var(--sec); font-size:16px; }
+.tag { display:inline-block; font-size:16px; padding:2px 8px; background:#bbd4ea; color:#0c2d4a; }
+.tag.green { background:#cce2d8; color:#005a30; }
+.tag.grey { background:#e5e6e7; color:#383f43; }
+.inset { border-left:10px solid var(--border); padding:15px; margin:30px 0; }
+.panel-side h3 { font-size:19px; margin:0 0 10px; border-top:2px solid var(--link); padding-top:15px; }
+.panel-side dl { margin:0; }
+.panel-side dt { color:var(--sec); font-size:16px; }
+.panel-side dd { margin:0 0 15px; font-size:27px; font-weight:700; }
+.btn { font:inherit; font-size:19px; background:var(--green); color:#fff; border:0; border-radius:0; padding:8px 10px 7px; box-shadow:0 2px 0 #002d18; cursor:pointer; margin-right:15px; }
+.btn.sec { background:#f3f2f1; color:var(--text); box-shadow:0 2px 0 #929191; }
+.foot { border-top:1px solid var(--border); background:var(--light); padding:25px 30px; font-size:16px; color:var(--sec); }
+.foot div { max-width:960px; margin:0 auto; }
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><span class="name">Hours Proof</span><span class="who">Enrollment assister · Gemini Nano ready</span></div></header>
+<div class="service"><div class="service-inner"><a class="cur" href="#">Client month</a><a href="#">How it works</a></div></div>
+<div class="phase"><strong>DEMO</strong>Every document here is fictional.</div>
+<main>
+  <span class="caption">Dana · January 2027</span>
+  <h1>Check the documents</h1>
+  <p class="lede">Read on this laptop by Gemini Nano. Nothing was uploaded. Check each line against the paper.</p>
+
+  <div class="grid">
+    <div>
+      <table class="sl">
+        <tr><th>Pay stub<span class="hint">Riverbend Grocery</span></th><td>18 hours, $270.00<span class="hint">3 to 16 January</span></td><td class="act"><a href="#">Change</a></td></tr>
+        <tr><th>Pay stub<span class="hint">Riverbend Grocery</span></th><td>12 hours, $180.00<span class="hint">17 to 30 January</span></td><td class="act"><a href="#">Change</a></td></tr>
+        <tr><th>Volunteer letter<span class="hint">Northside Community Pantry</span></th><td>28 hours<span class="hint">2 to 30 January</span></td><td class="act"><a href="#">Change</a></td></tr>
+        <tr><th>Gig app summary<span class="hint">QuickCart Driver</span></th><td>$186.40<span class="hint">14 hours 5 minutes active time, not counted as hours</span></td><td class="act"><a href="#">Change</a></td></tr>
+      </table>
+      <p><span class="tag green">Read on this laptop</span>&nbsp; <span class="tag grey">4 documents</span></p>
+
+      <div class="inset">58 hours is short of 80, but $636.40 of pay meets the income route ($580 is 80 hours at the $7.25 federal minimum wage).</div>
+
+      <button class="btn">Check Missouri's rules</button><button class="btn sec">Add another document</button>
+    </div>
+    <aside class="panel-side">
+      <h3>January 2027</h3>
+      <dl>
+        <dt>Hours</dt><dd>58 of 80</dd>
+        <dt>Pay</dt><dd>$636.40 of $580</dd>
+        <dt>Result</dt><dd><span class="tag green" style="font-size:19px">Meets through pay</span></dd>
+      </dl>
+    </aside>
+  </div>
+</main>
+<footer class="foot"><div>Hours Proof prepares proof. It isn't legal advice, and the state makes the decision.</div></footer>
+</body>
+</html>

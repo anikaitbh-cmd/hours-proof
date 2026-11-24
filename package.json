@@ -12,6 +12,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "@uswds/uswds": "^3.14.0",
     "firebase": "^13.4.0"
   },
   "devDependencies": {
