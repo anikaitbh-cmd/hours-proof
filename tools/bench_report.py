@@ -29,6 +29,6 @@ for s in ["clean", "messy", "phone"]:
         detail.append(f"- {s}/{r['name']} `{x['k']}`: wanted `{x['want']}`, got `{x['got']}`{' (flagged)' if r['flags'] else ''}")
     for r in rs:
         if "error" in r: detail.append(f"- {s}/{r['name']}: error {r['error'][:120]}")
-out += ["", "A flagged field is highlighted on the card and needs the assister's \"It's right\" before it counts.", "", "## Misses", ""] + (detail or ["None."])
+out += ["", "A flagged field is highlighted on its document and needs the assister's \"It's right\" before it counts.", "", "## Misses", ""] + (detail or ["None."])
 (root / "bench/RESULTS.md").write_text("\n".join(out) + "\n")
 print("\n".join(out[6:10]))

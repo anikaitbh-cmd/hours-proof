@@ -1,0 +1,2816 @@
+[
+ {
+  "set": "clean",
+  "name": "stub-00",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6356,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-01-18",
+    "got": "2026-01-18",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-01-31",
+    "got": "2026-01-31",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 23,
+    "got": 23,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 391,
+    "got": 391,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Maplewood Pet Supply",
+   "periodStart": "01/18/2026",
+   "periodEnd": "01/31/2026",
+   "hours": 23,
+   "rate": 17,
+   "gross": 391
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-01",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 5750,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-03",
+    "got": "2027-01-03",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-16",
+    "got": "2027-01-16",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 13.75,
+    "got": 13.75,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 206.25,
+    "got": 206.25,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "OZARK VALLEY DINER",
+   "periodStart": "01/03/2027",
+   "periodEnd": "01/16/2027",
+   "hours": 13.75,
+   "rate": 15,
+   "gross": 206.25
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-02",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6135,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-10-11",
+    "got": "2026-10-11",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-10-24",
+    "got": "2026-10-24",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 9,
+    "got": 9,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 135,
+    "got": 135,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "Oct 11, 2026",
+   "periodEnd": "Oct 24, 2026",
+   "hours": 9,
+   "rate": 15,
+   "gross": 135
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-03",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6020,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-07-19",
+    "got": "2026-07-19",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-08-01",
+    "got": "2026-08-01",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 27,
+    "got": 27,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 496.8,
+    "got": 496.8,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Riverbend Grocery",
+   "periodStart": "07/19/2026",
+   "periodEnd": "08/01/2026",
+   "hours": 27,
+   "rate": 18.4,
+   "gross": 496.8
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-04",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6295,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-04-26",
+    "got": "2026-04-26",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-05-09",
+    "got": "2026-05-09",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30.5,
+    "got": 30.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 457.5,
+    "got": 457.5,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "SHOW-ME WAREHOUSE CO.",
+   "periodStart": "04/26/2026",
+   "periodEnd": "05/09/2026",
+   "hours": 30.5,
+   "rate": 15,
+   "gross": 457.5
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-05",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6135,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-01-18",
+    "got": "2026-01-18",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-01-31",
+    "got": "2026-01-31",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 14,
+    "got": 14,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 257.6,
+    "got": 257.6,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Gateway Home Care LLC",
+   "periodStart": "Jan 18, 2026",
+   "periodEnd": "Jan 31, 2026",
+   "hours": 14,
+   "rate": 18.4,
+   "gross": 257.6
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-06",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6097,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-17",
+    "got": "2027-01-17",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-30",
+    "got": "2027-01-30",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 12.5,
+    "got": 12.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 203.12,
+    "got": 203.12,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "01/17/2027",
+   "periodEnd": "01/30/2027",
+   "hours": 12.5,
+   "rate": 16.25,
+   "gross": 203.12
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-07",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6257,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-10-25",
+    "got": "2026-10-25",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-11-07",
+    "got": "2026-11-07",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30.25,
+    "got": 30.25,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 468.88,
+    "got": 468.88,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "RIVERBEND GROCERY",
+   "periodStart": "10/25/2026",
+   "periodEnd": "11/07/2026",
+   "hours": 30.25,
+   "rate": 15.5,
+   "gross": 468.88
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-08",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6062,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-31",
+    "got": "2027-01-31",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-02-13",
+    "got": "2027-02-13",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 26.25,
+    "got": 26.25,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 393.75,
+    "got": 393.75,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Riverbend Grocery",
+   "periodStart": "Jan 31, 2027",
+   "periodEnd": "Feb 13, 2027",
+   "hours": 26.25,
+   "rate": 15,
+   "gross": 393.75
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-09",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6784,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-01-18",
+    "got": "2026-01-18",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-01-31",
+    "got": "2026-01-31",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 25.5,
+    "got": 25.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 414.38,
+    "got": 414.38,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "01/18/2026",
+   "periodEnd": "01/31/2026",
+   "hours": 25.5,
+   "rate": 16.25,
+   "gross": 414.38
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-10",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6303,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-06-21",
+    "got": "2026-06-21",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-07-04",
+    "got": "2026-07-04",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 16.5,
+    "got": 16.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 280.5,
+    "got": 280.5,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "BIG RIVER LAUNDRY",
+   "periodStart": "06/21/2026",
+   "periodEnd": "07/04/2026",
+   "hours": 16.5,
+   "rate": 17,
+   "gross": 280.5
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-11",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 5757,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-03",
+    "got": "2027-01-03",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-16",
+    "got": "2027-01-16",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 32.5,
+    "got": 32.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 503.75,
+    "got": 503.75,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Ozark Valley Diner",
+   "periodStart": "Jan 03, 2027",
+   "periodEnd": "Jan 16, 2027",
+   "hours": 32.5,
+   "rate": 15.5,
+   "gross": 503.75
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-12",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6245,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-12-20",
+    "got": "2026-12-20",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-02",
+    "got": "2027-01-02",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 27.75,
+    "got": 27.75,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 416.25,
+    "got": 416.25,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Ozark Valley Diner",
+   "periodStart": "12/20/2026",
+   "periodEnd": "01/02/2027",
+   "hours": 27.75,
+   "rate": 15,
+   "gross": 416.25
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-13",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6247,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-11-22",
+    "got": "2026-11-22",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-12-05",
+    "got": "2026-12-05",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 28,
+    "got": 28,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 588,
+    "got": 588,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "BIG RIVER LAUNDRY",
+   "periodStart": "11/22/2026",
+   "periodEnd": "12/05/2026",
+   "hours": 28,
+   "rate": 21,
+   "gross": 588
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-14",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6245,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-12-20",
+    "got": "2026-12-20",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-02",
+    "got": "2027-01-02",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 34.5,
+    "got": 34.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 634.8,
+    "got": 634.8,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "Dec 20, 2026",
+   "periodEnd": "Jan 02, 2027",
+   "hours": 34.5,
+   "rate": 18.4,
+   "gross": 634.8
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-15",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6226,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-08-16",
+    "got": "2026-08-16",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-08-29",
+    "got": "2026-08-29",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 33.5,
+    "got": 33.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 569.5,
+    "got": 569.5,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Ozark Valley Diner",
+   "periodStart": "08/16/2026",
+   "periodEnd": "08/29/2026",
+   "hours": 33.5,
+   "rate": 17,
+   "gross": 569.5
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-16",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6182,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-05-10",
+    "got": "2026-05-10",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-05-23",
+    "got": "2026-05-23",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 40.75,
+    "got": 40.75,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 631.62,
+    "got": 631.62,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "OZARK VALLEY DINER",
+   "periodStart": "05/10/2026",
+   "periodEnd": "05/23/2026",
+   "hours": 40.75,
+   "rate": 15.5,
+   "gross": 631.62
+  }
+ },
+ {
+  "set": "clean",
+  "name": "stub-17",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6095,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-02-01",
+    "got": "2026-02-01",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-02-14",
+    "got": "2026-02-14",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30,
+    "got": 30,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 465,
+    "got": 465,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Big River Laundry",
+   "periodStart": "Feb 01, 2026",
+   "periodEnd": "Feb 14, 2026",
+   "hours": 30,
+   "rate": 15.5,
+   "gross": 465
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-00",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 5705,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2027-01-11",
+    "got": "2027-01-11",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2027-01-17",
+    "got": "2027-01-17",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 889.47,
+    "got": 889.47,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 1556,
+    "got": 1556,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Jan 11",
+   "rangeEnd": "Jan 17, 2027",
+   "earnings": 889.47,
+   "activeTime": "25h 56m",
+   "onlineTime": "35h 25m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-01",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 5707,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-11-09",
+    "got": "2026-11-09",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-11-22",
+    "got": "2026-11-22",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 87.57,
+    "got": 87.57,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 1390,
+    "got": 1390,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Nov 09",
+   "rangeEnd": "Nov 22, 2026",
+   "earnings": 87.57,
+   "activeTime": "23h 10m",
+   "onlineTime": "26h 35m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-02",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6252,
+  "flags": [
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2027-01-04",
+    "got": "2027-01-04",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2027-02-03",
+    "got": "2027-02-03",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 92.54,
+    "got": 92.54,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 2121,
+    "got": 2121,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Jan 04",
+   "rangeEnd": "Feb 03, 2027",
+   "earnings": 92.54,
+   "activeTime": "35h 21m",
+   "onlineTime": "38h 13m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-03",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6151,
+  "flags": [
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-08-17",
+    "got": "2026-08-17",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-09-16",
+    "got": "2026-09-16",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 840.13,
+    "got": 840.13,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 371,
+    "got": 371,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Aug 17",
+   "rangeEnd": "Sep 16, 2026",
+   "earnings": 840.13,
+   "activeTime": "6h 11m",
+   "onlineTime": "13h 10m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-04",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6310,
+  "flags": [
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-04-06",
+    "got": "2026-04-06",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-05-06",
+    "got": "2026-05-06",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 183.78,
+    "got": 183.78,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 880,
+    "got": 880,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Apr 06",
+   "rangeEnd": "May 06, 2026",
+   "earnings": 183.78,
+   "activeTime": "14h 40m",
+   "onlineTime": "18h 51m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-05",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6272,
+  "flags": [
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-10-19",
+    "got": "2026-10-19",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-11-18",
+    "got": "2026-11-18",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 293.9,
+    "got": 293.9,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 724,
+    "got": 724,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Oct 19",
+   "rangeEnd": "Nov 18, 2026",
+   "earnings": 293.9,
+   "activeTime": "12h 04m",
+   "onlineTime": "21h 32m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-06",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6191,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-09-14",
+    "got": "2026-09-14",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-09-27",
+    "got": "2026-09-27",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 539.42,
+    "got": 539.42,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 658,
+    "got": 658,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Sep 14",
+   "rangeEnd": "Sep 27, 2026",
+   "earnings": 539.42,
+   "activeTime": "10h 58m",
+   "onlineTime": "16h 16m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "gig-07",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6266,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-03-02",
+    "got": "2026-03-02",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-03-15",
+    "got": "2026-03-15",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 768.33,
+    "got": 768.33,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 971,
+    "got": 971,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Mar 02",
+   "rangeEnd": "Mar 15, 2026",
+   "earnings": 768.33,
+   "activeTime": "16h 11m",
+   "onlineTime": "28h 09m"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "vol-00",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7033,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Northside Community Pantry",
+    "got": "Northside Community Pantry",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-06-04",
+    "got": "2026-06-04",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-06-25",
+    "got": "2026-06-25",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Northside Community Pantry",
+   "address": "3120 N Grand Blvd, St. Louis, MO 63107",
+   "periodStart": "June 04, 2026",
+   "periodEnd": "June 25, 2026",
+   "hours": 20,
+   "activity": "sorting and handing out food boxes",
+   "contact": "Grace Holloway"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "vol-01",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7008,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Riverfront Literacy Project",
+    "got": "Riverfront Literacy Project",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-06-02",
+    "got": "2026-06-02",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-06-27",
+    "got": "2026-06-27",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30,
+    "got": 30,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Riverfront Literacy Project",
+   "address": "450 Main St, Kansas City, MO 64105",
+   "periodStart": "June 02, 2026",
+   "periodEnd": "June 27, 2026",
+   "hours": 30,
+   "activity": "tutoring adults in reading",
+   "contact": "Samuel Okafor"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "vol-02",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 6970,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Hope Street Shelter",
+    "got": "Hope Street Shelter",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-09-02",
+    "got": "2026-09-02",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-09-23",
+    "got": "2026-09-23",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 36,
+    "got": 36,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Hope Street Shelter",
+   "address": "18 Hope St, Columbia, MO 65201",
+   "periodStart": "September 02, 2026",
+   "periodEnd": "September 23, 2026",
+   "hours": 36,
+   "activity": "serving meals and cleaning the dining hall",
+   "contact": "Ellen Varga"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "vol-03",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7300,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Northside Community Pantry",
+    "got": "Northside Community Pantry",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-05-03",
+    "got": "2026-05-03",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-05-25",
+    "got": "2026-05-25",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 12,
+    "got": 12,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Northside Community Pantry",
+   "address": "3120 N Grand Blvd, St. Louis, MO 63107",
+   "periodStart": "May 03, 2026",
+   "periodEnd": "May 25, 2026",
+   "hours": 12,
+   "activity": "sorting and handing out food boxes",
+   "contact": "Grace Holloway"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "vol-04",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7291,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Riverfront Literacy Project",
+    "got": "Riverfront Literacy Project",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-07-05",
+    "got": "2026-07-05",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-07-27",
+    "got": "2026-07-27",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Riverfront Literacy Project",
+   "address": "450 Main St, Kansas City, MO 64105",
+   "periodStart": "July 05, 2026",
+   "periodEnd": "July 27, 2026",
+   "hours": 20,
+   "activity": "tutoring adults in reading",
+   "contact": "Samuel Okafor"
+  }
+ },
+ {
+  "set": "clean",
+  "name": "vol-05",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7223,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Hope Street Shelter",
+    "got": "Hope Street Shelter",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-07-05",
+    "got": "2026-07-05",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-07-26",
+    "got": "2026-07-26",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Hope Street Shelter",
+   "address": "18 Hope St, Columbia, MO 65201",
+   "periodStart": "July 05, 2026",
+   "periodEnd": "July 26, 2026",
+   "hours": 20,
+   "activity": "serving meals and cleaning the dining hall",
+   "contact": "Ellen Varga"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-00",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6905,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-01-18",
+    "got": "2026-01-18",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-01-31",
+    "got": "2026-01-31",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 23,
+    "got": 23,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 391,
+    "got": 391,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Maplewood Pet Supply",
+   "periodStart": "01/18/2026",
+   "periodEnd": "01/31/2026",
+   "hours": 23,
+   "rate": 17,
+   "gross": 391
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-01",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6911,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-03",
+    "got": "2027-01-03",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-16",
+    "got": "2027-01-16",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 13.75,
+    "got": 13.75,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 206.25,
+    "got": 206.25,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "OZARK VALLEY DINER",
+   "periodStart": "01/03/2027",
+   "periodEnd": "01/16/2027",
+   "hours": 13.75,
+   "rate": 15,
+   "gross": 206.25
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-02",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6989,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-10-11",
+    "got": "2026-10-11",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-10-24",
+    "got": "2026-10-24",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 9,
+    "got": 9,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 135,
+    "got": 135,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "Oct 11, 2026",
+   "periodEnd": "Oct 24, 2026",
+   "hours": 9,
+   "rate": 15,
+   "gross": 135
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-03",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7079,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-07-19",
+    "got": "2026-07-19",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-08-01",
+    "got": "2026-08-01",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 27,
+    "got": 27,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 496.8,
+    "got": 496.8,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Riverbend Grocery",
+   "periodStart": "07/19/2026",
+   "periodEnd": "08/01/2026",
+   "hours": 27,
+   "rate": 18.4,
+   "gross": 496.8
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-04",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7238,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-04-26",
+    "got": "2026-04-26",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-05-09",
+    "got": "2026-05-09",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30.5,
+    "got": 30.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 457.5,
+    "got": 457.5,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "SHOW-ME WAREHOUSE CO.",
+   "periodStart": "04/26/2026",
+   "periodEnd": "05/09/2026",
+   "hours": 30.5,
+   "rate": 15,
+   "gross": 457.5
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-05",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7243,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-01-18",
+    "got": "2026-01-18",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-01-31",
+    "got": "2026-01-31",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 14,
+    "got": 14,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 257.6,
+    "got": 257.6,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Gateway Home Care LLC",
+   "periodStart": "Jan 18, 2026",
+   "periodEnd": "Jan 31, 2026",
+   "hours": 14,
+   "rate": 18.4,
+   "gross": 257.6
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-06",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7281,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-17",
+    "got": "2027-01-17",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-30",
+    "got": "2027-01-30",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 12.5,
+    "got": 12.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 203.12,
+    "got": 203.12,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "01/17/2027",
+   "periodEnd": "01/30/2027",
+   "hours": 12.5,
+   "rate": 16.25,
+   "gross": 203.12
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-07",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7340,
+  "flags": [
+   "gross",
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-10-25",
+    "got": "2026-10-25",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-11-07",
+    "got": "2026-11-07",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30.25,
+    "got": 30.25,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 468.88,
+    "got": 15.5,
+    "ok": false
+   }
+  ],
+  "raw": {
+   "employer": "RIVERBEND GROCERY",
+   "periodStart": "10/25/2026",
+   "periodEnd": "11/07/2026",
+   "hours": 30.25,
+   "rate": 15.5,
+   "gross": 15.5
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-08",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7068,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-31",
+    "got": "2027-01-31",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-02-13",
+    "got": "2027-02-13",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 26.25,
+    "got": 26.25,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 393.75,
+    "got": 393.75,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Riverbend Grocery",
+   "periodStart": "Jan 31, 2027",
+   "periodEnd": "Feb 13, 2027",
+   "hours": 26.25,
+   "rate": 15,
+   "gross": 393.75
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-09",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7230,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-01-18",
+    "got": "2026-01-18",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-01-31",
+    "got": "2026-01-31",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 25.5,
+    "got": 25.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 414.38,
+    "got": 414.38,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "01/18/2026",
+   "periodEnd": "01/31/2026",
+   "hours": 25.5,
+   "rate": 16.25,
+   "gross": 414.38
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-10",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7318,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-06-21",
+    "got": "2026-06-21",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-07-04",
+    "got": "2026-07-04",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 16.5,
+    "got": 16.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 280.5,
+    "got": 280.5,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "BIG RIVER LAUNDRY",
+   "periodStart": "06/21/2026",
+   "periodEnd": "07/04/2026",
+   "hours": 16.5,
+   "rate": 17,
+   "gross": 280.5
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-11",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7202,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2027-01-03",
+    "got": "2027-01-03",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-16",
+    "got": "2027-01-16",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 32.5,
+    "got": 32.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 503.75,
+    "got": 503.75,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Ozark Valley Diner",
+   "periodStart": "Jan 03, 2027",
+   "periodEnd": "Jan 16, 2027",
+   "hours": 32.5,
+   "rate": 15.5,
+   "gross": 503.75
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-12",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7168,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-12-20",
+    "got": "2026-12-20",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-02",
+    "got": "2027-01-02",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 27.75,
+    "got": 27.75,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 416.25,
+    "got": 416.25,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Ozark Valley Diner",
+   "periodStart": "12/20/2026",
+   "periodEnd": "01/02/2027",
+   "hours": 27.75,
+   "rate": 15,
+   "gross": 416.25
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-13",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7131,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-11-22",
+    "got": "2026-11-22",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-12-05",
+    "got": "2026-12-05",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 28,
+    "got": 28,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 588,
+    "got": 588,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "BIG RIVER LAUNDRY",
+   "periodStart": "11/22/2026",
+   "periodEnd": "12/05/2026",
+   "hours": 28,
+   "rate": 21,
+   "gross": 588
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-14",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7238,
+  "flags": [
+   "periodStart"
+  ],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-12-20",
+    "got": "2026-12-20",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2027-01-02",
+    "got": "2027-01-02",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 34.5,
+    "got": 34.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 634.8,
+    "got": 634.8,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Show-Me Warehouse Co.",
+   "periodStart": "Dec 20, 2026",
+   "periodEnd": "Jan 02, 2027",
+   "hours": 34.5,
+   "rate": 18.4,
+   "gross": 634.8
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-15",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 6935,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-08-16",
+    "got": "2026-08-16",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-08-29",
+    "got": "2026-08-29",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 33.5,
+    "got": 33.5,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 569.5,
+    "got": 569.5,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Ozark Valley Diner",
+   "periodStart": "08/16/2026",
+   "periodEnd": "08/29/2026",
+   "hours": 33.5,
+   "rate": 17,
+   "gross": 569.5
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-16",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7199,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-05-10",
+    "got": "2026-05-10",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-05-23",
+    "got": "2026-05-23",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 40.75,
+    "got": 40.75,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 631.62,
+    "got": 631.62,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "OZARK VALLEY DINER",
+   "periodStart": "05/10/2026",
+   "periodEnd": "05/23/2026",
+   "hours": 40.75,
+   "rate": 15.5,
+   "gross": 631.62
+  }
+ },
+ {
+  "set": "messy",
+  "name": "stub-17",
+  "type": "pay_stub",
+  "gotType": "pay_stub",
+  "where": "on_device",
+  "ms": 7447,
+  "flags": [],
+  "fields": [
+   {
+    "k": "periodStart",
+    "want": "2026-02-01",
+    "got": "2026-02-01",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-02-14",
+    "got": "2026-02-14",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30,
+    "got": 30,
+    "ok": true
+   },
+   {
+    "k": "gross",
+    "want": 465,
+    "got": 465,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "employer": "Big River Laundry",
+   "periodStart": "Feb 01, 2026",
+   "periodEnd": "Feb 14, 2026",
+   "hours": 30,
+   "rate": 15.5,
+   "gross": 465
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-00",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 7844,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2027-01-11",
+    "got": "2027-01-11",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2027-01-17",
+    "got": "2027-01-17",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 889.47,
+    "got": 889.47,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 1556,
+    "got": 1556,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Jan 11 - Jan 17, 2027",
+   "rangeEnd": "Jan 17, 2027",
+   "earnings": 889.47,
+   "activeTime": "25h 56m",
+   "onlineTime": "35h 25m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-01",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 7379,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-11-09",
+    "got": "2026-11-09",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-11-22",
+    "got": "2026-11-22",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 87.57,
+    "got": 87.57,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 1390,
+    "got": 1390,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Nov 09",
+   "rangeEnd": "Nov 22, 2026",
+   "earnings": 87.57,
+   "activeTime": "23h 10m",
+   "onlineTime": "26h 35m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-02",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6808,
+  "flags": [
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2027-01-04",
+    "got": null,
+    "ok": false
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2027-02-03",
+    "got": null,
+    "ok": false
+   },
+   {
+    "k": "earnings",
+    "want": 92.54,
+    "got": 92.54,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 2121,
+    "got": 2121,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Jan 04",
+   "rangeEnd": "Feb 03",
+   "earnings": 92.54,
+   "activeTime": "35h 21m",
+   "onlineTime": "38h 13m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-03",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6972,
+  "flags": [
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-08-17",
+    "got": "2026-08-17",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-09-16",
+    "got": "2026-09-16",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 840.13,
+    "got": 840.13,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 371,
+    "got": 371,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Aug 17",
+   "rangeEnd": "Sep 16, 2026",
+   "earnings": 840.13,
+   "activeTime": "6h 11m",
+   "onlineTime": "13h 10m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-04",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 7022,
+  "flags": [
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-04-06",
+    "got": "2026-04-06",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-05-06",
+    "got": "2026-05-06",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 183.78,
+    "got": 183.78,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 880,
+    "got": 880,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Apr 06",
+   "rangeEnd": "May 06, 2026",
+   "earnings": 183.78,
+   "activeTime": "14h 40m",
+   "onlineTime": "18h 51m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-05",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6866,
+  "flags": [
+   "activeMinutes",
+   "rangeStart"
+  ],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-10-19",
+    "got": "2026-10-19",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-11-18",
+    "got": "2026-11-18",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 293.9,
+    "got": 293.9,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 724,
+    "got": null,
+    "ok": false
+   }
+  ],
+  "raw": {
+   "platform": "BasketGo",
+   "rangeStart": "Oct 19",
+   "rangeEnd": "Nov 18, 2026",
+   "earnings": 293.9,
+   "activeTime": "30",
+   "onlineTime": "12h 04m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-06",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 7142,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-09-14",
+    "got": "2026-09-14",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-09-27",
+    "got": "2026-09-27",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 539.42,
+    "got": 539.42,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 658,
+    "got": 658,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Sep 14",
+   "rangeEnd": "Sep 27, 2026",
+   "earnings": 539.42,
+   "activeTime": "10h 58m",
+   "onlineTime": "16h 16m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "gig-07",
+  "type": "gig_summary",
+  "gotType": "gig_summary",
+  "where": "on_device",
+  "ms": 6607,
+  "flags": [],
+  "fields": [
+   {
+    "k": "rangeStart",
+    "want": "2026-03-02",
+    "got": "2026-03-02",
+    "ok": true
+   },
+   {
+    "k": "rangeEnd",
+    "want": "2026-03-15",
+    "got": "2026-03-15",
+    "ok": true
+   },
+   {
+    "k": "earnings",
+    "want": 768.33,
+    "got": 768.33,
+    "ok": true
+   },
+   {
+    "k": "activeMinutes",
+    "want": 971,
+    "got": 971,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "platform": "QuickCart Driver",
+   "rangeStart": "Mar 02",
+   "rangeEnd": "Mar 15, 2026",
+   "earnings": 768.33,
+   "activeTime": "16h 11m",
+   "onlineTime": "28h 09m"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "vol-00",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7712,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Northside Community Pantry",
+    "got": "Northside Community Pantry",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-06-04",
+    "got": "2026-06-04",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-06-25",
+    "got": "2026-06-25",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Northside Community Pantry",
+   "address": "3120 N Grand Blvd, St. Louis, MO 63107",
+   "periodStart": "June 04, 2026",
+   "periodEnd": "June 25, 2026",
+   "hours": 20,
+   "activity": "sorting and handing out food boxes",
+   "contact": "Grace Holloway"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "vol-01",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 8323,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Riverfront Literacy Project",
+    "got": "Riverfront Literacy Project",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-06-02",
+    "got": "2026-06-02",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-06-27",
+    "got": "2026-06-27",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 30,
+    "got": 30,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Riverfront Literacy Project",
+   "address": "450 Main St, Kansas City, MO 64105",
+   "periodStart": "06 02, 2026",
+   "periodEnd": "June 27, 2026",
+   "hours": 30,
+   "activity": "tutoring adults in reading",
+   "contact": "Samuel Okafor Program Director (816) 555-0193"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "vol-02",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7650,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Hope Street Shelter",
+    "got": "Hope Street Shelter",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-09-02",
+    "got": "2026-09-02",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-09-23",
+    "got": "2026-09-23",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 36,
+    "got": 36,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Hope Street Shelter",
+   "address": "18 Hope St, Columbia, MO 65201",
+   "periodStart": "September 02, 2026",
+   "periodEnd": "September 23, 2026",
+   "hours": 36,
+   "activity": "serving meals and cleaning the dining hall",
+   "contact": "Ellen Varga"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "vol-03",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 8435,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Northside Community Pantry",
+    "got": "Northside Community Pantry",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-05-03",
+    "got": "2026-05-03",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-05-25",
+    "got": "2026-05-25",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 12,
+    "got": 12,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Northside Community Pantry",
+   "address": "3120 N Grand Blvd. St. Louis, MO 63107",
+   "periodStart": "May 03, 2026",
+   "periodEnd": "May 25, 2026",
+   "hours": 12,
+   "activity": "sorting and handing out food boxes",
+   "contact": "Grace Holloway Volunteer Coordinator (314) 555-0148"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "vol-04",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 8428,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Riverfront Literacy Project",
+    "got": "Riverfront Literacy Project",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-07-05",
+    "got": "2026-07-05",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-07-27",
+    "got": "2026-07-27",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Riverfront Literacy Project",
+   "address": "450 Main St, Kansas City, MO 64105",
+   "periodStart": "July 05, 2026",
+   "periodEnd": "July 27, 2026",
+   "hours": 20,
+   "activity": "tutoring adults in reading",
+   "contact": "Samuel Okafor\nProgram Director\n(816) 555-0193"
+  }
+ },
+ {
+  "set": "messy",
+  "name": "vol-05",
+  "type": "volunteer_letter",
+  "gotType": "volunteer_letter",
+  "where": "on_device",
+  "ms": 7255,
+  "flags": [],
+  "fields": [
+   {
+    "k": "org",
+    "want": "Hope Street Shelter",
+    "got": "Hope Street Shelter",
+    "ok": true
+   },
+   {
+    "k": "periodStart",
+    "want": "2026-07-05",
+    "got": "2026-07-05",
+    "ok": true
+   },
+   {
+    "k": "periodEnd",
+    "want": "2026-07-26",
+    "got": "2026-07-26",
+    "ok": true
+   },
+   {
+    "k": "hours",
+    "want": 20,
+    "got": 20,
+    "ok": true
+   }
+  ],
+  "raw": {
+   "org": "Hope Street Shelter",
+   "address": "18 Hope St, Columbia, MO 65201",
+   "periodStart": "July 05, 2026",
+   "periodEnd": "July 26, 2026",
+   "hours": 20,
+   "activity": "serving meals and cleaning the dining hall",
+   "contact": "Ellen Varga"
+  }
+ }
+]

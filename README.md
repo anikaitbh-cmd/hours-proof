@@ -18,6 +18,8 @@ Hours Proof is built for that desk. The assister drops in one client's mixed pil
 4. **Missouri's rules checked in the cloud**, from a fixed list of public CMS and Missouri DSS pages, with source links and a "last checked" time.
 5. **A reply to the state's notice**, drafted from totals, then a printable packet with the reply, the summary and the proof.
 
+The interface is built on the [U.S. Web Design System](https://designsystem.digital.gov/) (the official `@uswds/uswds` package: its components, icons, Public Sans and Merriweather), the design system used across U.S. federal public services.
+
 ## How the work is split
 
 | Step | Private data? | Where it runs | Firebase AI Logic mode | Why |
@@ -61,8 +63,8 @@ Without Gemini Nano, client documents are **not** sent to the cloud. The assiste
 
 | Set | Docs | Fields exact | Wrong but not flagged |
 |---|---|---|---|
-| Clean | 32 | 127/128 (99.2%) | 0 |
-| Phone-photo style (tilted, shadowed, blurred, JPEG) | 32 | 125/128 (97.7%) | 0 |
+| Clean | 32 | 128/128 (100%) | 0 |
+| Phone-photo style (tilted, shadowed, blurred, JPEG) | 32 | 124/128 (96.9%) | 0 |
 
 What got it there, all in code rather than prompts: the model copies dates and durations exactly as printed, and code converts them (asking Nano to reformat dates made it invent years: 93.8% before). Hours × rate is checked against gross pay, and period lengths over 35 days are flagged as a likely misread year.
 

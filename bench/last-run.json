@@ -5,7 +5,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 10336,
+  "ms": 6356,
   "flags": [],
   "fields": [
    {
@@ -48,7 +48,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12018,
+  "ms": 5750,
   "flags": [],
   "fields": [
    {
@@ -91,7 +91,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 11172,
+  "ms": 6135,
   "flags": [],
   "fields": [
    {
@@ -134,8 +134,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 11523,
-  "flags": [],
+  "ms": 6020,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -177,8 +179,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12044,
-  "flags": [],
+  "ms": 6295,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -220,7 +224,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12355,
+  "ms": 6135,
   "flags": [],
   "fields": [
    {
@@ -263,7 +267,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12411,
+  "ms": 6097,
   "flags": [],
   "fields": [
    {
@@ -306,8 +310,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12820,
-  "flags": [],
+  "ms": 6257,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -349,8 +355,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12807,
-  "flags": [],
+  "ms": 6062,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -392,7 +400,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12877,
+  "ms": 6784,
   "flags": [],
   "fields": [
    {
@@ -435,8 +443,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12224,
-  "flags": [],
+  "ms": 6303,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -478,7 +488,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12359,
+  "ms": 5757,
   "flags": [],
   "fields": [
    {
@@ -521,8 +531,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12836,
-  "flags": [],
+  "ms": 6245,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -564,8 +576,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 11972,
-  "flags": [],
+  "ms": 6247,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -607,8 +621,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12849,
-  "flags": [],
+  "ms": 6245,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -650,7 +666,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12598,
+  "ms": 6226,
   "flags": [],
   "fields": [
    {
@@ -693,7 +709,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12577,
+  "ms": 6182,
   "flags": [],
   "fields": [
    {
@@ -736,7 +752,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12393,
+  "ms": 6095,
   "flags": [],
   "fields": [
    {
@@ -779,7 +795,7 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12601,
+  "ms": 5705,
   "flags": [],
   "fields": [
    {
@@ -822,7 +838,7 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12331,
+  "ms": 5707,
   "flags": [],
   "fields": [
    {
@@ -865,9 +881,9 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 11330,
+  "ms": 6252,
   "flags": [
-   "activeMinutes"
+   "rangeStart"
   ],
   "fields": [
    {
@@ -891,8 +907,8 @@
    {
     "k": "activeMinutes",
     "want": 2121,
-    "got": null,
-    "ok": false
+    "got": 2121,
+    "ok": true
    }
   ],
   "raw": {
@@ -900,7 +916,7 @@
    "rangeStart": "Jan 04",
    "rangeEnd": "Feb 03, 2027",
    "earnings": 92.54,
-   "activeTime": null,
+   "activeTime": "35h 21m",
    "onlineTime": "38h 13m"
   }
  },
@@ -910,8 +926,10 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12405,
-  "flags": [],
+  "ms": 6151,
+  "flags": [
+   "rangeStart"
+  ],
   "fields": [
    {
     "k": "rangeStart",
@@ -953,8 +971,10 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12367,
-  "flags": [],
+  "ms": 6310,
+  "flags": [
+   "rangeStart"
+  ],
   "fields": [
    {
     "k": "rangeStart",
@@ -996,8 +1016,10 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12172,
-  "flags": [],
+  "ms": 6272,
+  "flags": [
+   "rangeStart"
+  ],
   "fields": [
    {
     "k": "rangeStart",
@@ -1039,7 +1061,7 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12469,
+  "ms": 6191,
   "flags": [],
   "fields": [
    {
@@ -1082,7 +1104,7 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12623,
+  "ms": 6266,
   "flags": [],
   "fields": [
    {
@@ -1125,7 +1147,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13790,
+  "ms": 7033,
   "flags": [],
   "fields": [
    {
@@ -1169,7 +1191,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13615,
+  "ms": 7008,
   "flags": [],
   "fields": [
    {
@@ -1213,7 +1235,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13433,
+  "ms": 6970,
   "flags": [],
   "fields": [
    {
@@ -1257,7 +1279,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13618,
+  "ms": 7300,
   "flags": [],
   "fields": [
    {
@@ -1301,7 +1323,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 12918,
+  "ms": 7291,
   "flags": [],
   "fields": [
    {
@@ -1345,7 +1367,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13420,
+  "ms": 7223,
   "flags": [],
   "fields": [
    {
@@ -1389,7 +1411,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12688,
+  "ms": 6905,
   "flags": [],
   "fields": [
    {
@@ -1432,7 +1454,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 11976,
+  "ms": 6911,
   "flags": [],
   "fields": [
    {
@@ -1475,7 +1497,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12624,
+  "ms": 6989,
   "flags": [],
   "fields": [
    {
@@ -1518,8 +1540,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12631,
-  "flags": [],
+  "ms": 7079,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -1561,8 +1585,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12672,
-  "flags": [],
+  "ms": 7238,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -1604,7 +1630,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12687,
+  "ms": 7243,
   "flags": [],
   "fields": [
    {
@@ -1647,7 +1673,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12796,
+  "ms": 7281,
   "flags": [],
   "fields": [
    {
@@ -1690,9 +1716,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12748,
+  "ms": 7340,
   "flags": [
-   "gross"
+   "gross",
+   "periodStart"
   ],
   "fields": [
    {
@@ -1735,8 +1762,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12258,
-  "flags": [],
+  "ms": 7068,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -1778,7 +1807,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12086,
+  "ms": 7230,
   "flags": [],
   "fields": [
    {
@@ -1821,8 +1850,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12774,
-  "flags": [],
+  "ms": 7318,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -1864,7 +1895,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12813,
+  "ms": 7202,
   "flags": [],
   "fields": [
    {
@@ -1907,8 +1938,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12837,
-  "flags": [],
+  "ms": 7168,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -1950,8 +1983,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12818,
-  "flags": [],
+  "ms": 7131,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -1993,8 +2028,10 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12753,
-  "flags": [],
+  "ms": 7238,
+  "flags": [
+   "periodStart"
+  ],
   "fields": [
    {
     "k": "periodStart",
@@ -2036,7 +2073,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 11912,
+  "ms": 6935,
   "flags": [],
   "fields": [
    {
@@ -2079,7 +2116,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12788,
+  "ms": 7199,
   "flags": [],
   "fields": [
    {
@@ -2122,7 +2159,7 @@
   "type": "pay_stub",
   "gotType": "pay_stub",
   "where": "on_device",
-  "ms": 12662,
+  "ms": 7447,
   "flags": [],
   "fields": [
    {
@@ -2165,16 +2202,14 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12614,
-  "flags": [
-   "rangeStart"
-  ],
+  "ms": 7844,
+  "flags": [],
   "fields": [
    {
     "k": "rangeStart",
     "want": "2027-01-11",
-    "got": null,
-    "ok": false
+    "got": "2027-01-11",
+    "ok": true
    },
    {
     "k": "rangeEnd",
@@ -2210,7 +2245,7 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12601,
+  "ms": 7379,
   "flags": [],
   "fields": [
    {
@@ -2253,20 +2288,22 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12582,
-  "flags": [],
+  "ms": 6808,
+  "flags": [
+   "rangeStart"
+  ],
   "fields": [
    {
     "k": "rangeStart",
     "want": "2027-01-04",
-    "got": "2027-01-04",
-    "ok": true
+    "got": null,
+    "ok": false
    },
    {
     "k": "rangeEnd",
     "want": "2027-02-03",
-    "got": "2027-02-03",
-    "ok": true
+    "got": null,
+    "ok": false
    },
    {
     "k": "earnings",
@@ -2284,7 +2321,7 @@
   "raw": {
    "platform": "QuickCart Driver",
    "rangeStart": "Jan 04",
-   "rangeEnd": "Feb 03, 2027",
+   "rangeEnd": "Feb 03",
    "earnings": 92.54,
    "activeTime": "35h 21m",
    "onlineTime": "38h 13m"
@@ -2296,8 +2333,10 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12755,
-  "flags": [],
+  "ms": 6972,
+  "flags": [
+   "rangeStart"
+  ],
   "fields": [
    {
     "k": "rangeStart",
@@ -2339,8 +2378,10 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 11989,
-  "flags": [],
+  "ms": 7022,
+  "flags": [
+   "rangeStart"
+  ],
   "fields": [
    {
     "k": "rangeStart",
@@ -2382,9 +2423,10 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 11702,
+  "ms": 6866,
   "flags": [
-   "activeMinutes"
+   "activeMinutes",
+   "rangeStart"
   ],
   "fields": [
    {
@@ -2427,7 +2469,7 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12755,
+  "ms": 7142,
   "flags": [],
   "fields": [
    {
@@ -2470,7 +2512,7 @@
   "type": "gig_summary",
   "gotType": "gig_summary",
   "where": "on_device",
-  "ms": 12732,
+  "ms": 6607,
   "flags": [],
   "fields": [
    {
@@ -2513,7 +2555,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 14056,
+  "ms": 7712,
   "flags": [],
   "fields": [
    {
@@ -2544,8 +2586,8 @@
   "raw": {
    "org": "Northside Community Pantry",
    "address": "3120 N Grand Blvd, St. Louis, MO 63107",
-   "periodStart": "06/04/2026",
-   "periodEnd": "06/25/2026",
+   "periodStart": "June 04, 2026",
+   "periodEnd": "June 25, 2026",
    "hours": 20,
    "activity": "sorting and handing out food boxes",
    "contact": "Grace Holloway"
@@ -2557,7 +2599,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 14328,
+  "ms": 8323,
   "flags": [],
   "fields": [
    {
@@ -2588,11 +2630,11 @@
   "raw": {
    "org": "Riverfront Literacy Project",
    "address": "450 Main St, Kansas City, MO 64105",
-   "periodStart": "06/02/2026",
-   "periodEnd": "06/27/2026",
+   "periodStart": "06 02, 2026",
+   "periodEnd": "June 27, 2026",
    "hours": 30,
    "activity": "tutoring adults in reading",
-   "contact": "Samuel Okafor"
+   "contact": "Samuel Okafor Program Director (816) 555-0193"
   }
  },
  {
@@ -2601,7 +2643,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13439,
+  "ms": 7650,
   "flags": [],
   "fields": [
    {
@@ -2632,8 +2674,8 @@
   "raw": {
    "org": "Hope Street Shelter",
    "address": "18 Hope St, Columbia, MO 65201",
-   "periodStart": "09/02/2026",
-   "periodEnd": "09/23/2026",
+   "periodStart": "September 02, 2026",
+   "periodEnd": "September 23, 2026",
    "hours": 36,
    "activity": "serving meals and cleaning the dining hall",
    "contact": "Ellen Varga"
@@ -2645,7 +2687,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 12947,
+  "ms": 8435,
   "flags": [],
   "fields": [
    {
@@ -2675,12 +2717,12 @@
   ],
   "raw": {
    "org": "Northside Community Pantry",
-   "address": "3120 N Grand Blvd, St. Louis, MO 63107",
-   "periodStart": "05/03/2026",
-   "periodEnd": "05/25/2026",
+   "address": "3120 N Grand Blvd. St. Louis, MO 63107",
+   "periodStart": "May 03, 2026",
+   "periodEnd": "May 25, 2026",
    "hours": 12,
    "activity": "sorting and handing out food boxes",
-   "contact": "Grace Holloway"
+   "contact": "Grace Holloway Volunteer Coordinator (314) 555-0148"
   }
  },
  {
@@ -2689,7 +2731,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13546,
+  "ms": 8428,
   "flags": [],
   "fields": [
    {
@@ -2720,11 +2762,11 @@
   "raw": {
    "org": "Riverfront Literacy Project",
    "address": "450 Main St, Kansas City, MO 64105",
-   "periodStart": "07/05/2026",
-   "periodEnd": "07/27/2026",
+   "periodStart": "July 05, 2026",
+   "periodEnd": "July 27, 2026",
    "hours": 20,
    "activity": "tutoring adults in reading",
-   "contact": "Samuel Okafor"
+   "contact": "Samuel Okafor\nProgram Director\n(816) 555-0193"
   }
  },
  {
@@ -2733,7 +2775,7 @@
   "type": "volunteer_letter",
   "gotType": "volunteer_letter",
   "where": "on_device",
-  "ms": 13480,
+  "ms": 7255,
   "flags": [],
   "fields": [
    {
@@ -2764,8 +2806,8 @@
   "raw": {
    "org": "Hope Street Shelter",
    "address": "18 Hope St, Columbia, MO 65201",
-   "periodStart": "07/05/2026",
-   "periodEnd": "07/26/2026",
+   "periodStart": "July 05, 2026",
+   "periodEnd": "July 26, 2026",
    "hours": 20,
    "activity": "serving meals and cleaning the dining hall",
    "contact": "Ellen Varga"
