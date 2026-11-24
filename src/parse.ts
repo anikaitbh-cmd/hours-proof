@@ -55,11 +55,10 @@ export function amount(v: unknown): number | null {
  */
 export function isoRange(start: unknown, end: unknown): [string | null, string | null] {
   // A whole range copied into one field: "Apr 06 - May 06, 2026".
-  for (const [one, other] of [[start, end], [end, start]] as const) {
-    if (typeof one === "string" && (other === null || other === undefined || other === "" || other === one)) {
-      const parts = one.split(/\s+(?:-|–|—|to|through)\s+/i);
-      if (parts.length === 2) return isoRange(parts[0], parts[1]);
-    }
+  for (const one of [start, end]) {
+    if (typeof one !== "string") continue;
+    const parts = one.split(/\s+(?:-|–|—|to|through)\s+/i);
+    if (parts.length === 2) return isoRange(parts[0], parts[1]);
   }
   const e = isoDate(end);
   let s = isoDate(start);

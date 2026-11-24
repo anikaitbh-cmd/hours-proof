@@ -43,5 +43,6 @@ describe("isoRange (year borrowed from the end date)", () => {
 describe("date variants seen from Nano in the bench", () => {
   it.each([["05 03 2026", "2026-05-03"], ["07 05, 2026", "2026-07-05"], ["Jan 1, 17", null]])("%s -> %s", (s, d) => expect(isoDate(s)).toBe(d));
   it("splits a range copied into one field", () => expect(isoRange("Apr 06 - May 06, 2026", null)).toEqual(["2026-04-06", "2026-05-06"]));
+  it("splits a range even when the end is also filled", () => expect(isoRange("Jan 11 - Jan 17, 2027", "Jan 17, 2027")).toEqual(["2027-01-11", "2027-01-17"]));
   it("leaves dates with no year blank", () => expect(isoRange("Jan 04", "Feb 03")).toEqual([null, null]));
 });

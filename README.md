@@ -57,7 +57,14 @@ Without Gemini Nano, client documents are **not** sent to the cloud. The assiste
 
 ## Accuracy
 
-`bench.html` runs Gemini Nano on device over fictional fixtures with known answers (`bench/fixtures`, drawn by `tools/make_docs.py`) and scores every field. Results: [`bench/RESULTS.md`](bench/RESULTS.md).
+`bench.html` runs Gemini Nano on device over fictional fixtures with known answers (`bench/fixtures`, drawn by `tools/make_docs.py`) and scores every field. Latest run ([`bench/RESULTS.md`](bench/RESULTS.md)):
+
+| Set | Docs | Fields exact | Wrong but not flagged |
+|---|---|---|---|
+| Clean | 32 | 127/128 (99.2%) | 0 |
+| Phone-photo style (tilted, shadowed, blurred, JPEG) | 32 | 125/128 (97.7%) | 0 |
+
+What got it there, all in code rather than prompts: the model copies dates and durations exactly as printed, and code converts them (asking Nano to reformat dates made it invent years: 93.8% before). Hours × rate is checked against gross pay, and period lengths over 35 days are flagged as a likely misread year.
 
 ## Run it
 

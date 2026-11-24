@@ -6,24 +6,16 @@ document type is also right. Messy = the same documents rotated, shaded, blurred
 
 | Set | Docs | Fields exact | Hours + money exact | Dates exact | Type right | Silent errors (wrong, not flagged) | Median s/doc |
 |---|---|---|---|---|---|---|---|
-| clean | 32 | 125/128 = 97.7% | 58/58 | 61/64 | 32/32 | 0 | 11.8 |
-| messy | 32 | 117/128 = 91.4% | 56/58 | 55/64 | 32/32 | 0 | 12.2 |
+| clean | 32 | 127/128 = 99.2% | 57/58 | 64/64 | 32/32 | 0 | 12.4 |
+| messy | 32 | 125/128 = 97.7% | 56/58 | 63/64 | 32/32 | 0 | 12.7 |
 
 A flagged field is highlighted on the card and needs the assister's "It's right" before it counts.
 
 ## Misses
 
-- clean/vol-03 `periodStart`: wanted `2026-05-03`, got `None` (flagged)
-- clean/vol-04 `periodStart`: wanted `2026-07-05`, got `None` (flagged)
-- clean/vol-04 `periodEnd`: wanted `2026-07-27`, got `None` (flagged)
+After this run, `isoRange` also splits a range copied into one field (the messy/gig-00 miss below); covered by a unit test.
+
+- clean/gig-02 `activeMinutes`: wanted `2121`, got `None` (flagged)
 - messy/stub-07 `gross`: wanted `468.88`, got `15.5` (flagged)
 - messy/gig-00 `rangeStart`: wanted `2027-01-11`, got `None` (flagged)
-- messy/gig-02 `rangeStart`: wanted `2027-01-04`, got `None` (flagged)
-- messy/gig-02 `rangeEnd`: wanted `2027-02-03`, got `None` (flagged)
-- messy/gig-04 `rangeStart`: wanted `2026-04-06`, got `None` (flagged)
-- messy/gig-04 `rangeEnd`: wanted `2026-05-06`, got `None` (flagged)
 - messy/gig-05 `activeMinutes`: wanted `724`, got `None` (flagged)
-- messy/vol-03 `periodStart`: wanted `2026-05-03`, got `None` (flagged)
-- messy/vol-03 `periodEnd`: wanted `2026-05-25`, got `None` (flagged)
-- messy/vol-04 `periodStart`: wanted `2026-07-05`, got `None` (flagged)
-- messy/vol-04 `periodEnd`: wanted `2026-07-27`, got `None` (flagged)
