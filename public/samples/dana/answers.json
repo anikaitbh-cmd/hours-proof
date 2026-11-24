@@ -1,0 +1,30 @@
+{
+  "pay-stub-jan-1.png": {
+    "type": "pay_stub",
+    "periodStart": "2027-01-03",
+    "periodEnd": "2027-01-16",
+    "hours": 18.0,
+    "gross": 270.0
+  },
+  "pay-stub-jan-2.png": {
+    "type": "pay_stub",
+    "periodStart": "2027-01-17",
+    "periodEnd": "2027-01-30",
+    "hours": 12.0,
+    "gross": 180.0
+  },
+  "volunteer-letter-jan.png": {
+    "type": "volunteer_letter",
+    "org": "Northside Community Pantry",
+    "periodStart": "2027-01-02",
+    "periodEnd": "2027-01-30",
+    "hours": 28
+  },
+  "gig-summary-jan.png": {
+    "type": "gig_summary",
+    "rangeStart": "2027-01-01",
+    "rangeEnd": "2027-01-31",
+    "earnings": 186.4,
+    "activeMinutes": 845
+  }
+}

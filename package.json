@@ -1,0 +1,25 @@
+{
+  "name": "hours-proof",
+  "version": "1.0.0",
+  "description": "Turns pay stubs and gig screenshots into proof of Medicaid work hours, read by Gemini Nano on device.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vitest run && vite build",
+    "test": "vitest run",
+    "preview": "vite preview",
+    "deploy": "npm run build && firebase deploy --only hosting"
+  },
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "firebase": "^13.4.0"
+  },
+  "devDependencies": {
+    "@types/dom-chromium-ai": "^0.0.18",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
+  },
+  "private": true
+}

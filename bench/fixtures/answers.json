@@ -1,0 +1,226 @@
+{
+  "stub-00": {
+    "type": "pay_stub",
+    "periodStart": "2026-01-18",
+    "periodEnd": "2026-01-31",
+    "hours": 23,
+    "gross": 391.0
+  },
+  "stub-01": {
+    "type": "pay_stub",
+    "periodStart": "2027-01-03",
+    "periodEnd": "2027-01-16",
+    "hours": 13.75,
+    "gross": 206.25
+  },
+  "stub-02": {
+    "type": "pay_stub",
+    "periodStart": "2026-10-11",
+    "periodEnd": "2026-10-24",
+    "hours": 9,
+    "gross": 135.0
+  },
+  "stub-03": {
+    "type": "pay_stub",
+    "periodStart": "2026-07-19",
+    "periodEnd": "2026-08-01",
+    "hours": 27,
+    "gross": 496.8
+  },
+  "stub-04": {
+    "type": "pay_stub",
+    "periodStart": "2026-04-26",
+    "periodEnd": "2026-05-09",
+    "hours": 30.5,
+    "gross": 457.5
+  },
+  "stub-05": {
+    "type": "pay_stub",
+    "periodStart": "2026-01-18",
+    "periodEnd": "2026-01-31",
+    "hours": 14,
+    "gross": 257.6
+  },
+  "stub-06": {
+    "type": "pay_stub",
+    "periodStart": "2027-01-17",
+    "periodEnd": "2027-01-30",
+    "hours": 12.5,
+    "gross": 203.12
+  },
+  "stub-07": {
+    "type": "pay_stub",
+    "periodStart": "2026-10-25",
+    "periodEnd": "2026-11-07",
+    "hours": 30.25,
+    "gross": 468.88
+  },
+  "stub-08": {
+    "type": "pay_stub",
+    "periodStart": "2027-01-31",
+    "periodEnd": "2027-02-13",
+    "hours": 26.25,
+    "gross": 393.75
+  },
+  "stub-09": {
+    "type": "pay_stub",
+    "periodStart": "2026-01-18",
+    "periodEnd": "2026-01-31",
+    "hours": 25.5,
+    "gross": 414.38
+  },
+  "stub-10": {
+    "type": "pay_stub",
+    "periodStart": "2026-06-21",
+    "periodEnd": "2026-07-04",
+    "hours": 16.5,
+    "gross": 280.5
+  },
+  "stub-11": {
+    "type": "pay_stub",
+    "periodStart": "2027-01-03",
+    "periodEnd": "2027-01-16",
+    "hours": 32.5,
+    "gross": 503.75
+  },
+  "stub-12": {
+    "type": "pay_stub",
+    "periodStart": "2026-12-20",
+    "periodEnd": "2027-01-02",
+    "hours": 27.75,
+    "gross": 416.25
+  },
+  "stub-13": {
+    "type": "pay_stub",
+    "periodStart": "2026-11-22",
+    "periodEnd": "2026-12-05",
+    "hours": 28,
+    "gross": 588.0
+  },
+  "stub-14": {
+    "type": "pay_stub",
+    "periodStart": "2026-12-20",
+    "periodEnd": "2027-01-02",
+    "hours": 34.5,
+    "gross": 634.8
+  },
+  "stub-15": {
+    "type": "pay_stub",
+    "periodStart": "2026-08-16",
+    "periodEnd": "2026-08-29",
+    "hours": 33.5,
+    "gross": 569.5
+  },
+  "stub-16": {
+    "type": "pay_stub",
+    "periodStart": "2026-05-10",
+    "periodEnd": "2026-05-23",
+    "hours": 40.75,
+    "gross": 631.62
+  },
+  "stub-17": {
+    "type": "pay_stub",
+    "periodStart": "2026-02-01",
+    "periodEnd": "2026-02-14",
+    "hours": 30,
+    "gross": 465.0
+  },
+  "gig-00": {
+    "type": "gig_summary",
+    "rangeStart": "2027-01-11",
+    "rangeEnd": "2027-01-17",
+    "earnings": 889.47,
+    "activeMinutes": 1556
+  },
+  "gig-01": {
+    "type": "gig_summary",
+    "rangeStart": "2026-11-09",
+    "rangeEnd": "2026-11-22",
+    "earnings": 87.57,
+    "activeMinutes": 1390
+  },
+  "gig-02": {
+    "type": "gig_summary",
+    "rangeStart": "2027-01-04",
+    "rangeEnd": "2027-02-03",
+    "earnings": 92.54,
+    "activeMinutes": 2121
+  },
+  "gig-03": {
+    "type": "gig_summary",
+    "rangeStart": "2026-08-17",
+    "rangeEnd": "2026-09-16",
+    "earnings": 840.13,
+    "activeMinutes": 371
+  },
+  "gig-04": {
+    "type": "gig_summary",
+    "rangeStart": "2026-04-06",
+    "rangeEnd": "2026-05-06",
+    "earnings": 183.78,
+    "activeMinutes": 880
+  },
+  "gig-05": {
+    "type": "gig_summary",
+    "rangeStart": "2026-10-19",
+    "rangeEnd": "2026-11-18",
+    "earnings": 293.9,
+    "activeMinutes": 724
+  },
+  "gig-06": {
+    "type": "gig_summary",
+    "rangeStart": "2026-09-14",
+    "rangeEnd": "2026-09-27",
+    "earnings": 539.42,
+    "activeMinutes": 658
+  },
+  "gig-07": {
+    "type": "gig_summary",
+    "rangeStart": "2026-03-02",
+    "rangeEnd": "2026-03-15",
+    "earnings": 768.33,
+    "activeMinutes": 971
+  },
+  "vol-00": {
+    "type": "volunteer_letter",
+    "org": "Northside Community Pantry",
+    "periodStart": "2026-06-04",
+    "periodEnd": "2026-06-25",
+    "hours": 20
+  },
+  "vol-01": {
+    "type": "volunteer_letter",
+    "org": "Riverfront Literacy Project",
+    "periodStart": "2026-06-02",
+    "periodEnd": "2026-06-27",
+    "hours": 30
+  },
+  "vol-02": {
+    "type": "volunteer_letter",
+    "org": "Hope Street Shelter",
+    "periodStart": "2026-09-02",
+    "periodEnd": "2026-09-23",
+    "hours": 36
+  },
+  "vol-03": {
+    "type": "volunteer_letter",
+    "org": "Northside Community Pantry",
+    "periodStart": "2026-05-03",
+    "periodEnd": "2026-05-25",
+    "hours": 12
+  },
+  "vol-04": {
+    "type": "volunteer_letter",
+    "org": "Riverfront Literacy Project",
+    "periodStart": "2026-07-05",
+    "periodEnd": "2026-07-27",
+    "hours": 20
+  },
+  "vol-05": {
+    "type": "volunteer_letter",
+    "org": "Hope Street Shelter",
+    "periodStart": "2026-07-05",
+    "periodEnd": "2026-07-26",
+    "hours": 20
+  }
+}
