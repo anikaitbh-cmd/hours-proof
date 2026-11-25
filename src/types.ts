@@ -62,6 +62,7 @@ export interface Doc {
   fields?: Fields;
   where?: Where;
   ms?: number;
+  startedAt?: number; // performance.now() when the read began
   flags: Flag[];
   confirmed: Set<string>;
   error?: string;

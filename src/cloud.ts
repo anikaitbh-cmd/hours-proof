@@ -7,6 +7,18 @@ import type { Totals, Where } from "./types";
  * The only payload that may leave the device. Built field by field from Totals, so a new
  * field can't slip in by accident. The leak test checks this function.
  */
+/** The model sometimes echoes payload keys ("gig active time (gigActiveHours)"); an assister should never see them. */
+const KEY_WORDS: Record<string, string> = {
+  gigActiveHours: "gig active time", totalHours: "total hours", workHours: "work hours", volunteerHours: "volunteer hours",
+  gigIncome: "gig income", meetsHours: "meets the hours test", meetsIncome: "meets the income test", schoolHalfTime: "half-time school",
+};
+function plain(s: string) {
+  return s
+    .replace(/\s*\((?:gigActiveHours|totalHours|workHours|volunteerHours|gigIncome|meetsHours|meetsIncome|schoolHalfTime|income)\)/g, "")
+    .replace(/\b(gigActiveHours|totalHours|workHours|volunteerHours|gigIncome|meetsHours|meetsIncome|schoolHalfTime)\b/g, (k) => KEY_WORDS[k])
+    .replace(/\s{2,}/g, " ").trim();
+}
+
 export function cloudPayload(t: Totals): string {
   const safe: Totals = {
     state: "MO",
@@ -67,10 +79,10 @@ export async function checkRules(t: Totals): Promise<RuleCheck> {
   const meta = r.response.candidates?.[0]?.urlContextMetadata?.urlMetadata ?? [];
   return {
     status: j.status ?? "unclear",
-    summary: j.summary ?? "",
-    rules: Array.isArray(j.rules) ? j.rules.slice(0, 5) : [],
-    startDate: j.startDate ?? "",
-    openQuestions: Array.isArray(j.openQuestions) ? j.openQuestions : [],
+    summary: plain(j.summary ?? ""),
+    rules: Array.isArray(j.rules) ? j.rules.slice(0, 5).map((x: { rule?: string; detail?: string }) => ({ ...x, rule: plain(x.rule ?? ""), detail: plain(x.detail ?? "") })) : [],
+    startDate: plain(j.startDate ?? ""),
+    openQuestions: Array.isArray(j.openQuestions) ? j.openQuestions.map((q: string) => plain(String(q))) : [],
     checkedAt: new Date().toISOString(),
     forPayload: cloudPayload(t),
     where: r.response.inferenceSource === InferenceSource.ON_DEVICE ? "on_device" : "in_cloud",

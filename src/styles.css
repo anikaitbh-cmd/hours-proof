@@ -27,7 +27,8 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.2; }
 
 /* Demo strip and header (usa-header basic, without the .gov banner: this isn't a government site) */
 .hp-demo { background: var(--base-lightest); font-size: .87rem; padding: .25rem 0; }
-.hp-header { border-bottom: 1px solid var(--base-lighter); }
+.hp-header { border-bottom: 1px solid var(--base-lighter); position: sticky; top: 0; z-index: 1000; background: #fff; }
+@media print { .hp-header { position: static; } }
 .hp-header__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding-top: 1rem; padding-bottom: 1rem; }
 .hp-logo { margin: 0; display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; }
 .hp-logo .usa-logo__text { font-family: var(--serif); font-weight: 700; font-size: 1.46rem; font-style: normal; color: var(--ink); }
@@ -63,10 +64,11 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.2; }
 
 /* Documents: one row per document, ruled like a summary list */
 .hp-docs { margin-top: 1.5rem; border-top: 1px solid var(--ink); }
-.hp-doc { border-bottom: 1px solid var(--base-lighter); padding: 1.25rem 0; }
+.hp-doc { border-bottom: 1px solid var(--base-lighter); padding: 1.25rem 0; display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+.hp-doc__img { width: 100%; max-height: 14rem; object-fit: contain; object-position: top; border: 1px solid var(--base-lighter); background: #fff; cursor: zoom-in; }
+.hp-doc__main { min-width: 0; }
 .hp-doc.is-flagged { background: var(--warning-lighter); padding-left: 1rem; padding-right: 1rem; }
 .hp-doc__head { display: flex; gap: 1rem; align-items: flex-start; }
-.hp-doc__thumb { width: 4.5rem; height: 4.5rem; object-fit: cover; object-position: top; border: 1px solid var(--base-lighter); cursor: zoom-in; flex: none; }
 .hp-doc__title { flex: 1; min-width: 0; }
 .hp-doc__title h3 { font-size: 1.13rem; margin: 0; }
 .hp-doc__file { color: var(--base); font-size: .87rem; margin: .1rem 0 .4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -76,7 +78,7 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.2; }
 .hp-flag p { margin: 0; display: flex; gap: .5rem; align-items: flex-start; font-weight: 600; }
 .hp-flag .usa-icon { flex: none; margin-top: .2rem; }
 .hp-flag .usa-button { margin: 0; flex: none; }
-.hp-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 1rem; }
+.hp-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 0 1rem; }
 .hp-fields .usa-form-group { margin-top: .75rem; }
 .hp-fields .usa-label { margin-top: 0; font-size: .93rem; }
 .hp-fields .usa-input, .hp-fields .usa-select { max-width: none; margin-top: .25rem; }
@@ -161,5 +163,7 @@ dialog.hp-zoom form { text-align: right; margin-top: .5rem; }
 @media (max-width: 30em) {
   .hp-fields, .hp-fill { grid-template-columns: 1fr; }
   .hp-fields .span2 { grid-column: auto; }
+  .hp-doc { grid-template-columns: 5rem minmax(0, 1fr); gap: .75rem; }
   .hp-title h1 { font-size: 1.95rem; }
 }
+html { scroll-padding-top: 5rem; }

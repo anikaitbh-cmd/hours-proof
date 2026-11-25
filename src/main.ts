@@ -77,11 +77,11 @@ function emptyFields(type: DocType): Fields {
 const icon = (name: string, cls = "") =>
   `<svg class="usa-icon ${cls}" aria-hidden="true" focusable="false" role="img"><use href="${sprite}#${name}"></use></svg>`;
 
-function badge(where?: Where, ms?: number, sample?: boolean) {
+function badge(where?: Where, ms?: number) {
   if (!where) return "";
   const t = ms ? ` · ${(ms / 1000).toFixed(1)} s` : "";
   if (where === "on_device") return `<span class="usa-tag hp-tag--device">On device · Gemini Nano${t}</span>`;
-  if (where === "in_cloud") return `<span class="usa-tag hp-tag--cloud">Cloud · Gemini${sample ? " · fictional sample" : ""}${t}</span>`;
+  if (where === "in_cloud") return `<span class="usa-tag hp-tag--cloud">Cloud · Gemini${t}</span>`;
   return `<span class="usa-tag hp-tag--hand">Typed by hand</span>`;
 }
 
@@ -107,7 +107,7 @@ function render() {
   <header class="hp-header"><div class="grid-container hp-header__inner">
     <div class="usa-logo hp-logo"><em class="usa-logo__text">Hours Proof</em><span class="hp-logo__sub">for Medicaid enrollment assisters</span></div>
     <ul class="usa-list usa-list--unstyled hp-status">
-      <li class="${S.online ? "" : "is-off"}">${icon("wifi")}${S.online ? "Online" : "Offline"}</li>
+      <li class="${S.online ? "" : "is-off"}">${icon("wifi")}${S.online ? "Online" : "Offline · no network"}</li>
       <li class="${S.nano === "available" ? "" : "is-warn"}">${icon(S.nano === "available" ? "check_circle" : "info")}${nanoLabel()}</li>
     </ul>
   </div></header>
@@ -243,17 +243,17 @@ function verdict(t: ReturnType<typeof ledger>["totals"], flagged: number, readin
 function docRow(d: Doc) {
   const type = d.fields?.type ?? "other";
   const flags = openFlags(d);
+  const img = `<img src="${d.imageUrl}" alt="Photo of ${esc(d.name)}" class="hp-doc__img" data-act="zoom" data-id="${d.id}">`;
   const head = `<div class="hp-doc__head">
-      <img src="${d.imageUrl}" alt="Photo of ${esc(d.name)}" class="hp-doc__thumb" data-act="zoom" data-id="${d.id}">
       <div class="hp-doc__title">
         <h3>${d.fields ? TYPE_LABEL[type] : esc(d.name)}</h3>
         <p class="hp-doc__file">${esc(d.name)}${d.sample ? " · fictional" : ""}</p>
-        ${d.status === "reading" ? `<span class="usa-tag hp-tag--busy">${d.sample || S.nano === "available" ? "Reading…" : "Waiting"}</span>` : badge(d.where, d.ms, d.sample)}
+        ${d.status === "reading" ? `<span class="usa-tag hp-tag--busy">${d.startedAt ? `Reading${S.nano === "available" ? " on device" : ""} · <span data-timer="${d.startedAt}">0.0</span> s` : d.sample || S.nano === "available" ? "Waiting to read" : "Waiting"}</span>` : badge(d.where, d.ms)}
       </div>
       <button class="usa-button usa-button--unstyled hp-doc__remove" data-act="remove" data-id="${d.id}" aria-label="Remove ${esc(d.name)}">${icon("close")}Remove</button>
     </div>`;
-  if (d.status === "reading") return `<article class="hp-doc">${head}</article>`;
-  if (d.status === "error") return `<article class="hp-doc">${head}<div class="usa-alert usa-alert--error usa-alert--slim"><div class="usa-alert__body"><p class="usa-alert__text">${esc(d.error)}</p></div></div></article>`;
+  if (d.status === "reading") return `<article class="hp-doc">${img}<div class="hp-doc__main">${head}</div></article>`;
+  if (d.status === "error") return `<article class="hp-doc">${img}<div class="hp-doc__main">${head}<div class="usa-alert usa-alert--error usa-alert--slim"><div class="usa-alert__body"><p class="usa-alert__text">${esc(d.error)}</p></div></div></div></article>`;
   const typeSelect = `<div class="usa-form-group"><label class="usa-label" for="${d.id}-type">Type</label>
     <select class="usa-select" id="${d.id}-type" data-act="type" data-id="${d.id}">
       ${(Object.keys(TYPE_LABEL) as DocType[]).map((t) => `<option value="${t}" ${t === type ? "selected" : ""}>${TYPE_LABEL[t]}</option>`).join("")}
@@ -270,9 +270,12 @@ function docRow(d: Doc) {
         ${flag ? `aria-describedby="${d.id}-${k}-flag" aria-invalid="true"` : ""}
         value="${v === null || v === undefined ? "" : esc(v)}"></div>`;
   }).join("");
-  const flagList = flags.map((f) => `<div class="hp-flag"><p id="${d.id}-${f.field}-flag">${icon("flag")}${esc(f.message)}</p>
-      <button class="usa-button usa-button--outline" data-act="confirm" data-id="${d.id}" data-key="${f.field}">It's right</button></div>`).join("");
-  return `<article class="hp-doc ${flags.length ? "is-flagged" : ""}">${head}${note}${flagList}<div class="hp-fields">${typeSelect}${fields}</div></article>`;
+  const blank = (k: string) => { const v = (d.fields as unknown as Record<string, unknown> | undefined)?.[k]; return v === null || v === undefined || v === ""; };
+  // A blank field can't be "right": the only fix is typing it in, so no confirm button.
+  // On a hand-entry document the note above already says to type the numbers; the empty boxes stay outlined.
+  const flagList = flags.filter((f) => !(d.status === "needs_entry" && blank(f.field))).map((f) => `<div class="hp-flag"><p id="${d.id}-${f.field}-flag">${icon("flag")}${esc(f.message)}</p>
+      ${blank(f.field) ? "" : `<button class="usa-button usa-button--outline" data-act="confirm" data-id="${d.id}" data-key="${f.field}">It's right</button>`}</div>`).join("");
+  return `<article class="hp-doc ${flags.length ? "is-flagged" : ""}">${img}<div class="hp-doc__main">${head}${note}${flagList}<div class="hp-fields">${typeSelect}${fields}</div></div></article>`;
 }
 
 function rulesBlock(t: ReturnType<typeof ledger>["totals"]) {
@@ -443,6 +446,8 @@ async function pump() {
     for (;;) {
       const d = S.docs.find((x) => x.status === "reading");
       if (!d) break;
+      d.startedAt = performance.now();
+      render();
       try {
         const r = await readDocument(S.blobs.get(d.id)!, { sample: d.sample, month: S.month });
         Object.assign(d, { fields: r.fields, where: r.where, ms: r.ms, flags: r.flags, status: "done" });
@@ -466,9 +471,16 @@ async function pump() {
   }
 }
 
+/** Dana's fictional details, typed in locally for the demo. They never reach a model. */
+const SAMPLE_FILL: Record<string, string> = {
+  "[CLIENT NAME]": "Dana Whitfield", "[CASE NUMBER]": "MO-27-0041183", "[NOTICE DATE]": "February 9, 2027",
+  "[ASSISTER NAME]": "Sam Ortiz", "[ORGANIZATION]": "Riverbend Community Clinic (fictional)",
+};
+
 async function loadSamples() {
   const names = ["pay-stub-jan-1.png", "pay-stub-jan-2.png", "pay-stub-dec.png", "volunteer-letter-jan.png", "gig-summary-jan.png"];
   S.month = "2027-01";
+  for (const [k, v] of Object.entries(SAMPLE_FILL)) if (!S.fill[k]) S.fill[k] = v;
   const files = await Promise.all(names.map(async (n) => {
     const b = await (await fetch(`/samples/dana/${n}`)).blob();
     return new File([b], n, { type: "image/png" });
@@ -557,6 +569,12 @@ function exportPacket() {
   const imgs = [...p.querySelectorAll("img")];
   Promise.all(imgs.map((im) => (im.complete ? 0 : new Promise((r) => (im.onload = r))))).then(() => window.print());
 }
+
+// Live read timer: shows the wait honestly while a document is being read.
+setInterval(() => {
+  for (const el of document.querySelectorAll<HTMLElement>("[data-timer]"))
+    el.textContent = ((performance.now() - Number(el.dataset.timer)) / 1000).toFixed(1);
+}, 100);
 
 // ---------------------------------------------------------------- start
 render();
